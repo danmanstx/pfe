@@ -57,6 +57,9 @@ class runFunctionTestCommand(sublime_plugin.WindowCommand):
     sublime.active_window().active_view().run_command("save")
     cmd_out = ""
     for window in sublime.active_window().views():
+      if not(window.file_name().split('/').pop().startswith("test_")):
+        print(window.file_name())
+        break
       ruby_file = "'"+sublime.packages_path() + "/pfe/ruby/source/run_function_test.rb'"
       cmd_str = ruby_cmd + ruby_file + ' ' + pfe_settings.get('host')
       cmd_str = cmd_str + ' ' + pfe_settings.get('database') + ' ' + pfe_settings.get('port') + ' ' + pfe_settings.get('user')

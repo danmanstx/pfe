@@ -7,7 +7,7 @@ Currently under heavy development which can be tracked at [trello](https://trell
 
 * Load functions from a specified database
 * Save a Function to the database with output
-* Ability to Run a [pgTAP](http://pgtap.org) test
+* Ability to Run a [pgTAP](http://pgtap.org) test, or all open test files
 
 ![gifgifgif](https://raw.github.com/danmanstx/pfe/master/images/pfe.gif)
 
