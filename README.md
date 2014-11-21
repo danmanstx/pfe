@@ -45,8 +45,8 @@ Currently under heavy development which can be tracked at [trello](https://trell
 
 ### Quick Create File
 
-* Invoke via <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>.</kbd>
-* Attempts to create the alternating file/test based on the schema and function name.
+* Invoke via <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>.</kbd>
+* Attempts to switch to or create the alternating file/test based on the schema and function name.
 
 ## Dependencies
 
@@ -95,6 +95,6 @@ Go to `Preferences` -> `Settings - User` and add this to the file:
 
 ## Copyright and license
 
-Copyright © 2014 @[danmanstx](http://twitter.com/danmanstx)
+Copyright © 2014 Danny Peters, @[danmanstx](http://twitter.com/danmanstx)
 
 Licensed under the [**GNU GPL**](https://gnu.org/licenses/gpl.html) license.
