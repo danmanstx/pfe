@@ -29,29 +29,29 @@ Currently under heavy development. [trello board](https://trello.com/b/aNujDnId/
 ### Load Database functions
 
 * Invoke via <kbd>F1</kbd> or `Tools` -> `Postgresql Function Editor` -> `Load Database Functions`
-* Loads the database functions in the side bar seperated by folders which one for each schema
+* Loads the database functions in the side bar seperated by folders which one for each schema.
 
 
 ### Save a Function to The Database
 
 * Invoke via <kbd>F2</kbd> or `Tools` -> `Postgresql Function Editor` -> `Save Database Function`
-* Saves the function to the database and opens a panel with the command output
+* Saves the function to the database and opens a panel with the command output.
 
 ![Saved Function](https://raw.github.com/danmanstx/pfe/master/images/save.png)
 
-### Run [pgTAP](http://pgtap.org) Test
+### Run [pgTAP](http://pgtap.org) Test(s)
 
 #### Run test in active tab
 
 * Invoke via <kbd>F3</kbd> or `Tools` -> `Postgresql Function Editor` -> `Run pgTAP Test`
-* Saves the function to the database and opens a panel with the command output
+* Saves the function to the database and opens a panel with the test output.
 
 ![Test Output](https://raw.github.com/danmanstx/pfe/master/images/test.png)
 
 #### Run all tests opened
 
 * Invoke via <kbd>F4</kbd> or `Tools` -> `Postgresql Function Editor` -> `Run All Opened Tests`
-* Saves the active function to the database and opens a panel with the command output
+* Saves the active function to the database and opens a panel with the test output for all open test.
 
 ### Quick Create File
 
