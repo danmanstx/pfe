@@ -4,6 +4,7 @@
    { "keys": ["f1"], "command": "load_database_functions" },
    { "keys": ["f2"], "command": "save_database_function" },
    { "keys": ["f3"], "command": "run_function_test" },
+   { "keys": ["f4"], "command": "run_all_function_tests" },
    { "keys": ["ctrl+shift+c"], "command": "generate_file" },
    { "keys": ["super+shift+period"], "command": "create_new_function", "context":
    [

@@ -41,10 +41,17 @@ Currently under heavy development. [trello board](https://trello.com/b/aNujDnId/
 
 ### Run [pgTAP](http://pgtap.org) Test
 
+#### Run test in active tab
+
 * Invoke via <kbd>F3</kbd> or `Tools` -> `Postgresql Function Editor` -> `Run pgTAP Test`
 * Saves the function to the database and opens a panel with the command output
 
 ![Test Output](https://raw.github.com/danmanstx/pfe/master/images/test.png)
+
+#### Run all tests opened
+
+* Invoke via <kbd>F4</kbd> or `Tools` -> `Postgresql Function Editor` -> `Run All Opened Tests`
+* Saves the active function to the database and opens a panel with the command output
 
 ### Quick Create File
 
