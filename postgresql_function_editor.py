@@ -4,7 +4,8 @@ SETTINGS_FILE = 'postgresql_function_editor.sublime-settings'
 pfe_settings = None
 
 def plugin_loaded():
-  global pfe_settings,ruby_manager,ruby_cmd,ruby_files_dir
+  global pfe_settings,ruby_manager,ruby_cmd,ruby_files_dir,split_view
+  split_view = False
   pfe_settings = sublime.load_settings(SETTINGS_FILE)
   ruby_manager = pfe_settings.get('ruby_manager', '')
 
@@ -97,7 +98,8 @@ class runFunctionTestCommand(sublime_plugin.WindowCommand):
     self.output_view.set_read_only(True)
 
 class CreateNewFunctionCommand(sublime_plugin.WindowCommand):
-  def run(self):
+  def run(self, should_split_view):
+    split_view = should_split_view
     current_file = sublime.active_window().active_view().file_name()
     schema = sublime.active_window().active_view().file_name().split('/').pop(-2)
     file_name = sublime.active_window().active_view().file_name().split('/').pop()
@@ -111,15 +113,31 @@ class CreateNewFunctionCommand(sublime_plugin.WindowCommand):
         new_file = "../" + schema.rstrip("testing").rstrip("_") + "/" + file_name.lstrip("test_")
       else:
         new_file = "../" + schema + "_testing" + "/" + "test_" + file_name
-
     if self.window.find_open_file(new_file):
+      if split_view is True:
+        sublime.message_dialog("should split")
+        self.split_view()
       self.window.open_file(new_file)
     else:
       self.window.show_input_panel("file_name:",
                                   new_file,
                                   self.on_done, None, None)
+
   def on_done(self, input):
+    if split_view is True:
+      self.split_view()
     self.window.open_file(input)
+
+  def split_view(self):
+    if self.window.num_groups() == 1:
+      self.window.run_command('set_layout',
+                      {
+                      "cols": [0.0, 1.0],
+                      "rows": [0.0, 0.5, 1.0],
+                      "cells": [[0, 0, 1, 1], [0, 1, 1, 2]]
+                      })
+      self.window.run_command('focus_group', {"group": 0})
+      self.window.run_command('move_to_group', {"group": 1})
 
 class SetDatabaseCommand(sublime_plugin.WindowCommand):
   def run(self):

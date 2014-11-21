@@ -52,9 +52,9 @@ Currently under heavy development. [trello board](https://trello.com/b/aNujDnId/
 * Invoke via <kbd>F4</kbd> or `Tools` -> `Postgresql Function Editor` -> `Run All Opened Tests`
 * Saves the active function to the database and opens a panel with the test output for all open test.
 
-### Quick Create File
+### Quick Switch/Create File
 
-* Invoke via <kbd>CMD</kbd>+<kbd>.</kbd>
+* Invoke via <kbd>CMD</kbd>+<kbd>.</kbd> or <kbd>CMD</kbd>+<kbd>Ctrl</kbd>+<kbd>.</kbd> for same pane split.
 * Attempts to switch to or create the alternating file/test based on the schema and function name.
 * this expects either a `public`/`testing` schema, or `foo` and `foo_testing` schemas as an example.
 
