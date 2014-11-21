@@ -5,7 +5,6 @@ Currently under heavy development. [trello board](https://trello.com/b/aNujDnId/
 
 *Warning:* If you experience problems or have enhancements please [file an issue](https://github.com/danmanstx/pfe/issues).
 
-
 ## Features
 
 * Load functions from a specified database.
@@ -14,7 +13,7 @@ Currently under heavy development. [trello board](https://trello.com/b/aNujDnId/
 * Pgplsql highlighting, and pgTAP output panel highlighting.
 * Quick Switch between file and test with <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>.</kbd>.
 
-![gifgifgif](https://raw.github.com/danmanstx/pfe/master/images/pfe.gif)
+![gif](https://raw.github.com/danmanstx/pfe/master/images/pfe.gif)
 
 ## Usage
 
@@ -80,7 +79,7 @@ Currently under heavy development. [trello board](https://trello.com/b/aNujDnId/
 
 Sample options below.
 
-Go to `Preferences` -> `Package Settings` -> `Postgresql Function Editor` ->`Settings - User` and add this to the file or copy and edit from `Settings - Default` :
+Go to `Preferences` -> `Package Settings` -> `Postgresql Function Editor`->`Settings - User` and add this to the file or copy and edit from `Settings - Default` :
 
 <pre>
 {
