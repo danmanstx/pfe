@@ -5,9 +5,11 @@ Currently under heavy development which can be tracked at [trello](https://trell
 
 ## Features
 
-* Load functions from a specified database
-* Save a Function to the database with output
-* Ability to Run a [pgTAP](http://pgtap.org) test, or all open test files
+* Load functions from a specified database.
+* Save a Function to the database with output.
+* Ability to Run a [pgTAP](http://pgtap.org) test, or all open test files.
+* Pgplsql highlighting, and pgTAP output panel highlighting.
+* Quick Switch between file and test with <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>.</kbd>.
 
 ![gifgifgif](https://raw.github.com/danmanstx/pfe/master/images/pfe.gif)
 

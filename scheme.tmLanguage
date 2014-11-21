@@ -5,7 +5,7 @@
   <key>bundleUUID</key>
   <string>72174d10-bb12-11e0-962b-112233445566</string>
   <key>name</key>
-  <string>TestConsole</string>
+  <string>pgTAP</string>
   <key>patterns</key>
   <array>
     <dict>
