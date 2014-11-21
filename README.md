@@ -47,7 +47,7 @@ Currently under heavy development which can be tracked at [trello](https://trell
 ### dependencies
 
 * Sublime Text 3
-* working ruby install with support for [rvm](http://rvm.io), [macports](http://www.macports.org), and system ruby
+* working ruby install with support for [rvm](http://rvm.io), [macports](http://www.macports.org), and system ruby **be sure to set in user settings**
 * [Ruby gem PG](https://rubygems.org/gems/pg)
 * [pgTAP](http://pgtap.org) for pgTAP testing
 
@@ -66,7 +66,8 @@ Sample options below.
 
 Go to `Preferences` -> `Settings - User` and add this to the file:
 
-`{
+<pre>
+{
   "function_folder": "/tmp/postgresFunctions",
   "host": "localhost",
   "database": "database",
@@ -74,7 +75,8 @@ Go to `Preferences` -> `Settings - User` and add this to the file:
   "password": "",
   "port": "5432",
   "ruby_manager": "rvm"
-}`
+}
+</pre>
 
 ## Changelog
 
