@@ -57,7 +57,7 @@ Currently under heavy development which can be tracked at [trello](https://trell
 
 **COMING SOON** install with [Package Control](http://wbond.net/sublime_packages/package_control):
 
-1. checkout the repo and install it in your sublime text Packages folder.
+1. checkout the repo and install it in your sublime text Packages folder, most likely found here `cd "$HOME/Library/Application Support/Sublime Text 3/Packages"`
 2. Restart ST editor (if required)
 
 ## Options
@@ -86,7 +86,8 @@ Go to `Preferences` -> `Settings - User` and add this to the file:
 
 ## Acknowledgments
 
-Inspired by [Suran Systems](http://www.suran.com) Textmate Postgresql Bundle.
+* Inspired by [Suran Systems](http://www.suran.com) Textmate Postgresql Bundle.
+* Inspired by [Ruby Test](https://github.com/maltize/sublime-text-2-ruby-tests).
 
 ## Copyright and license
 
