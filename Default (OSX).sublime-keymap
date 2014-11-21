@@ -5,5 +5,5 @@
    { "keys": ["f2"], "command": "save_database_function" },
    { "keys": ["f3"], "command": "run_function_test" },
    { "keys": ["ctrl+shift+c"], "command": "generate_file" },
-   { "keys": ["super+period"], "command": "create_new_function" }
+   { "keys": ["super+shift+period"], "command": "create_new_function" }
 ]
