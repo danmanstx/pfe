@@ -42,21 +42,30 @@ end
 def save_function(host, database, port, user, file, use_std_out=true)
   connection = test_connection(host, database, port, user)
   return connection if connection.is_a?(String)
-
   @function = create_function_string(file)
 
-  begin
-    result = connection.exec(@function)
-    if use_std_out
-      puts result.cmd_status
-    else
-      return result.cmd_status
-    end
+  result = connection.exec(@function)
+  if use_std_out
+    puts result.cmd_status
+  else
+    return result.cmd_status
+  end
   rescue PG::SyntaxError => e
     if use_std_out
       puts e
     else
       return e
     end
-  end
+end
+
+def run_single_test(connection, schema, test)
+  function = "SELECT * FROM pgtap.runtests('#{schema}','#{test}'); "
+  results = ''
+  connection.exec('BEGIN;')
+  result = connection.exec(function)
+  connection.exec('ROLLBACK;')
+  result.each { |line | results += line['runtests'].to_s + "\n" }
+  return results
+  rescue Exception => e
+    return e
 end
