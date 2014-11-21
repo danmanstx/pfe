@@ -4,8 +4,7 @@ SETTINGS_FILE = 'postgresql_function_editor.sublime-settings'
 pfe_settings = None
 
 def plugin_loaded():
-  global pfe_settings,ruby_manager,ruby_cmd,ruby_files_dir,split_view
-  split_view = False
+  global pfe_settings,ruby_manager,ruby_cmd,ruby_files_dir
   pfe_settings = sublime.load_settings(SETTINGS_FILE)
   ruby_manager = pfe_settings.get('ruby_manager', '')
 
@@ -56,14 +55,13 @@ class runAllFunctionTestsCommand(sublime_plugin.WindowCommand):
   def run(self):
     sublime.active_window().active_view().run_command("save")
     cmd_out = ""
-    for window in sublime.active_window().views():
-      if not(window.file_name().split('/').pop().startswith("test_")):
-        print(window.file_name())
-        break
+    for view in sublime.active_window().views():
+      if not(view.file_name().split('/').pop().startswith("test_")):
+        continue
       ruby_file = "'"+sublime.packages_path() + "/pfe/ruby/source/run_function_test.rb'"
       cmd_str = ruby_cmd + ruby_file + ' ' + pfe_settings.get('host')
       cmd_str = cmd_str + ' ' + pfe_settings.get('database') + ' ' + pfe_settings.get('port') + ' ' + pfe_settings.get('user')
-      cmd_str = cmd_str + ' ' + window.file_name().replace(" ","\\ ")
+      cmd_str = cmd_str + ' ' + view.file_name().replace(" ","\\ ")
       cmd_out = cmd_out + os.popen(cmd_str).read()
     self.output_view = self.window.get_output_panel("textarea")
     self.output_view.settings().set("color_scheme", "Packages/pfe/color.tmTheme")
@@ -99,7 +97,7 @@ class runFunctionTestCommand(sublime_plugin.WindowCommand):
 
 class CreateNewFunctionCommand(sublime_plugin.WindowCommand):
   def run(self, should_split_view):
-    split_view = should_split_view
+    pfe_settings.set('should_split_view', should_split_view)
     current_file = sublime.active_window().active_view().file_name()
     schema = sublime.active_window().active_view().file_name().split('/').pop(-2)
     file_name = sublime.active_window().active_view().file_name().split('/').pop()
@@ -114,8 +112,7 @@ class CreateNewFunctionCommand(sublime_plugin.WindowCommand):
       else:
         new_file = "../" + schema + "_testing" + "/" + "test_" + file_name
     if self.window.find_open_file(new_file):
-      if split_view is True:
-        sublime.message_dialog("should split")
+      if should_split_view is True:
         self.split_view()
       self.window.open_file(new_file)
     else:
@@ -124,6 +121,7 @@ class CreateNewFunctionCommand(sublime_plugin.WindowCommand):
                                   self.on_done, None, None)
 
   def on_done(self, input):
+    split_view = pfe_settings.get('should_split_view')
     if split_view is True:
       self.split_view()
     self.window.open_file(input)
@@ -206,5 +204,3 @@ class GetSyntaxCommand(sublime_plugin.TextCommand):
   def run(self, edit):
     for region in self.view.sel():
       syntax = self.view.encoding()
-      print(syntax)
-
