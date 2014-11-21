@@ -48,9 +48,6 @@ Currently under heavy development which can be tracked at [trello](https://trell
 * Invoke via <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>.</kbd>
 * Attempts to create the alternating file/test based on the schema and function name.
 
-![Test Output](https://raw.github.com/danmanstx/pfe/master/images/test.png)
-
-
 ## Dependencies
 
 * Sublime Text 3
