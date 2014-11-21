@@ -47,6 +47,7 @@ Currently under heavy development which can be tracked at [trello](https://trell
 
 * Invoke via <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>.</kbd>
 * Attempts to switch to or create the alternating file/test based on the schema and function name.
+* this expects either a `public`/`testing` schema, or `foo` and `foo_testing` schemas as an example.
 
 ## Dependencies
 
