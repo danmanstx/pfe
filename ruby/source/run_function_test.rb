@@ -6,7 +6,7 @@ database = ARGF.argv[1] || 'database'
 port = ARGF.argv[2] || '5432'
 user = ARGF.argv[3] || 'posgresql'
 file = ARGF.argv[4].gsub(' ', '\\ ')
-
+puts file
 saved_function = save_function(host, database, port, user, file, false)
 return saved_function if saved_function.include? 'ERROR'
 
