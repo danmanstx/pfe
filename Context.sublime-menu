@@ -1,0 +1,14 @@
+[
+  { "caption": "-" },
+  {
+    "caption": "Postgresql Function Editor",
+    "children":
+      [
+        { "caption": "Set Database Info", "command": "open_file", "args": { "file" : "${packages}/User/postgresql_function_editor.sublime-settings" } },
+        { "caption": "Load Database Functions", "command": "load_database_functions" },
+        { "caption": "-" },
+        { "caption": "Save Function", "command": "save_database_function" },
+        { "caption": "Run pgTAP Test", "command": "run_function_test" }
+      ]
+  }
+]

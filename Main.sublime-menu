@@ -1,0 +1,98 @@
+[
+  {
+    "id":"tools",
+    "children":[
+      {
+        "caption":"Postgresql Function Editor",
+        "children":[
+          {
+            "caption":"Set Database Info",
+            "command": "open_file", "args": { "file" : "${packages}/User/postgresql_function_editor.sublime-settings" }
+          },
+          {
+            "caption":"-"
+          },
+          {
+            "caption":"Load Database Functions",
+            "command":"load_database_functions"
+          },
+          {
+            "caption":"Save Database Function",
+            "command":"save_database_function"
+          },
+          {
+            "caption":"Run pgTAP Test",
+            "command":"run_function_test"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "caption":"Preferences",
+    "mnemonic":"n",
+    "id":"preferences",
+    "children":[
+      {
+        "caption":"Package Settings",
+        "mnemonic":"P",
+        "id":"package-settings",
+        "children":[
+          {
+            "caption":"Postgresql Function Editor",
+            "children":[
+              {
+                "command":"open_file",
+                "args":{
+                  "file":"${packages}/Postgresql Function Editor/postgresql_function_editor.sublime-settings"
+                },
+                "caption":"Settings – Default"
+              },
+              {
+                "command":"open_file",
+                "args":{
+                  "file":"${packages}/User/postgresql_function_editor.sublime-settings"
+                },
+                "caption":"Settings – User"
+              },
+              {
+                "caption":"-"
+              },
+              {
+                "command":"open_file",
+                "args":{
+                  "file":"${packages}/Postgresql Function Editor/Default.sublime-keymap"
+                },
+                "caption":"Key Bindings – Default"
+              },
+              {
+                "command":"open_file",
+                "args":{
+                  "file":"${packages}/Postgresql Function Editor/Default (Windows).sublime-keymap",
+                  "platform":"Windows"
+                },
+                "caption":"Key Bindings – User"
+              },
+              {
+                "command":"open_file",
+                "args":{
+                  "file":"${packages}/Postgresql Function Editor/Default (OSX).sublime-keymap",
+                  "platform":"OSX"
+                },
+                "caption":"Key Bindings – User"
+              },
+              {
+                "command":"open_file",
+                "args":{
+                  "file":"${packages}/Postgresql Function Editor/Default (Linux).sublime-keymap",
+                  "platform":"Linux"
+                },
+                "caption":"Key Bindings – User"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

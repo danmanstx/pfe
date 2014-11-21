@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>bundleUUID</key>
+  <string>72174d10-bb12-11e0-962b-112233445566</string>
+  <key>name</key>
+  <string>TestConsole</string>
+  <key>patterns</key>
+  <array>
+    <dict>
+      <key>comment</key>
+      <string>test pass</string>
+      <key>match</key>
+      <string>(\bok\s\d.+)|(CREATE FUNCTION)</string>
+      <key>name</key>
+      <string>test.pass</string>
+    </dict>
+    <dict>
+      <key>comment</key>
+      <string>test error</string>
+      <key>match</key>
+      <string>((not)\s(ok)\s\d+.+)|(DROP FUNCTION)</string>
+      <key>name</key>
+      <string>test.error</string>
+    </dict>
+    <dict>
+      <key>comment</key>
+      <string>test fail</string>
+      <key>match</key>
+      <string>\btest_\w+(.\w+)|\(\)</string>
+      <key>name</key>
+      <string>test.fail</string>
+    </dict>
+    <dict>
+      <key>skipped</key>
+      <string>test cucumber skipped</string>
+      <key>match</key>
+      <string>(cdmdata\d+)|(web_access)</string>
+      <key>name</key>
+      <string>test.skipped</string>
+    </dict>
+    <dict>
+      <key>pending</key>
+      <string>test cucumber pending in summary</string>
+      <key>match</key>
+      <string>\d(..)\d+</string>
+      <key>name</key>
+      <string>test.pending</string>
+    </dict>
+    <dict>
+      <key>comment</key>
+      <string>color syntax response</string>
+      <key>match</key>
+      <string>\".+\w\"</string>
+      <key>name</key>
+      <string>test.comment</string>
+    </dict>
+    <dict>
+      <key>comment</key>
+      <string>color syntax response</string>
+      <key>match</key>
+      <string>(localhost)|(hosting\d+.\w+.com)</string>
+      <key>name</key>
+      <string>test.skipped</string>
+    </dict>
+  </array>
+  <key>scopeName</key>
+  <string>tests.ruby</string>
+  <key>uuid</key>
+  <string>72174d10-bb12-11e0-962b-112233445566</string>
+</dict>
+</plist>

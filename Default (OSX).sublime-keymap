@@ -1,0 +1,8 @@
+[
+   { "keys": ["ctrl+shift+d"], "command": "open_file", "args": { "file" : "${packages}/User/postgresql_function_editor.sublime-settings" }
+   },
+   { "keys": ["f1"], "command": "load_database_functions" },
+   { "keys": ["f2"], "command": "save_database_function" },
+   { "keys": ["f3"], "command": "run_function_test" },
+   { "keys": ["ctrl+shift+c"], "command": "generate_file" }
+]
