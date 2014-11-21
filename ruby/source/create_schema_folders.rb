@@ -2,7 +2,7 @@ require_relative 'function_editor'
 
 time do
   host = ARGF.argv[0] || 'localhost'
-  database = ARGF.argv[1] || 'cdmdata3'
+  database = ARGF.argv[1] || 'database'
   port = ARGF.argv[2] || '5432'
   user = ARGF.argv[3] || 'postgres'
   tmp_dir = '/tmp/postgresFunctions/'
