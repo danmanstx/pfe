@@ -63,7 +63,7 @@ Currently under heavy development. [trello board](https://trello.com/b/aNujDnId/
 
 * Sublime Text 3
 * working ruby install with support for [rvm](http://rvm.io), [macports](http://www.macports.org), and system ruby **be sure to set in user settings**
-* [Ruby gem PG](https://rubygems.org/gems/pg)
+* [Ruby gem PG](https://rubygems.org/gems/pg) `gem install pg`
 * [pgTAP](http://pgtap.org) for pgTAP testing
 
 ## How to install
