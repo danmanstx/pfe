@@ -1,6 +1,7 @@
 # Sublime Text Postgresql Function Editor
 
 Plugin for Sublime Text 3 editor that helps you work directly with postgresql database functions and run pgTAP test.
+Currently under heavy development which can be tracked at [trello](https://trello.com/b/aNujDnId/posgresql-function-editor-sublime-text)
 
 ## Features
 
