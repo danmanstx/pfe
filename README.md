@@ -1,7 +1,10 @@
 # Postgresql Function Editor - Sublime Plugin
 
 Plugin for Sublime Text 3 editor that helps you work directly with postgresql database functions and run pgTAP test.
-Currently under heavy development which can be tracked at [trello](https://trello.com/b/aNujDnId/posgresql-function-editor-sublime-text)
+Currently under heavy development. [trello board](https://trello.com/b/aNujDnId/posgresql-function-editor-sublime-text)
+
+*Warning:* If you experience problems or have enhancements please [file an issue](https://github.com/danmanstx/pfe/issues).
+
 
 ## Features
 
@@ -58,18 +61,19 @@ Currently under heavy development which can be tracked at [trello](https://trell
 
 ## How to install
 
-*Warning:* If you experience problems or editor crashes please [file an issue](https://github.com/danmanstx/pfe/issues).
+1. checkout the repo and install it in your sublime text Packages folder,
 
-**COMING SOON** install with [Package Control](http://wbond.net/sublime_packages/package_control):
+   on mac `cd "$HOME/Library/Application Support/Sublime Text 3/Packages"`
 
-1. checkout the repo and install it in your sublime text Packages folder, most likely found here `cd "$HOME/Library/Application Support/Sublime Text 3/Packages"`
 2. Restart ST editor (if required)
+
+**COMING SOON** install with [Package Control](http://wbond.net/sublime_packages/package_control)
 
 ## Options
 
 Sample options below.
 
-Go to `Preferences` -> `Settings - User` and add this to the file:
+Go to `Preferences` -> `Package Settings` -> `Postgresql Function Editor` ->`Settings - User` and add this to the file or copy and edit from `Settings - Default` :
 
 <pre>
 {
