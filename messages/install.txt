@@ -1,5 +1,5 @@
-Congratulation! You have installed awesome plugin for creating/editing Postgresql Functions!
-Documentation can be found on  https://github.com/danmanstx
+Congratulation! You have installed awesome plugin for creating/editing/testing Postgresql Functions!
+Documentation can be found on  https://github.com/danmanstx/pfe
 Also feel free to report issues/suggestions there.
 
 Have fun !

@@ -156,3 +156,10 @@ class SetRubyManagerCommand(sublime_plugin.WindowCommand):
   def on_done(self, input):
     pfe_settings.set("ruby_manager", input)
     sublime.save_settings("postgresql_function_editor.sublime-settings")
+
+class GetSyntaxCommand(sublime_plugin.TextCommand):
+  def run(self, edit):
+    for region in self.view.sel():
+      syntax = self.view.encoding()
+      print(syntax)
+
