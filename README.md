@@ -25,21 +25,28 @@ Currently under heavy development which can be tracked at [trello](https://trell
 
 ### Load Database functions
 
-* Invoke via <kbd>F1</kbd> (menu: `Tools` -> `Postgresql Function Editor` -> `Load Database Functions`)
+* Invoke via <kbd>F1</kbd> or `Tools` -> `Postgresql Function Editor` -> `Load Database Functions`
 * Loads the database functions in the side bar seperated by folders which one for each schema
 
 
 ### Save a Function to The Database
 
-* Invoke via <kbd>F2</kbd> (menu: `Tools` -> `Postgresql Function Editor` -> `Save Database Function`)
+* Invoke via <kbd>F2</kbd> or `Tools` -> `Postgresql Function Editor` -> `Save Database Function`
 * Saves the function to the database and opens a panel with the command output
 
 ![Saved Function](https://raw.github.com/danmanstx/pfe/master/images/save.png)
 
 ### Run [pgTAP](http://pgtap.org) Test
 
-* Invoke via <kbd>F3</kbd> (menu: `Tools` -> `Postgresql Function Editor` -> `Run pgTAP Test`)
+* Invoke via <kbd>F3</kbd> or `Tools` -> `Postgresql Function Editor` -> `Run pgTAP Test`
 * Saves the function to the database and opens a panel with the command output
+
+![Test Output](https://raw.github.com/danmanstx/pfe/master/images/test.png)
+
+### Quick Create File
+
+* Invoke via <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>.</kbd>
+* Attempts to create the alternating file/test based on the schema and function name.
 
 ![Test Output](https://raw.github.com/danmanstx/pfe/master/images/test.png)
 

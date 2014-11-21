@@ -81,10 +81,17 @@ class CreateNewFunctionCommand(sublime_plugin.WindowCommand):
     current_file = sublime.active_window().active_view().file_name()
     schema = sublime.active_window().active_view().file_name().split('/').pop(-2)
     file_name = sublime.active_window().active_view().file_name().split('/').pop()
-    if(file_name.startswith("test_")):
-      new_file = "../"+schema.split('_').pop(-2) + "/" + file_name.lstrip("test_")
+    if (schema == "testing") or (schema == "public"):
+        if schema == "testing":
+          new_file = "../"+"public" + "/" + file_name.lstrip("test_")
+        else:
+          new_file = "../"+"testing" + "/" + "test_" + file_name
     else:
-      new_file = "../" + schema + "_testing" + "/" + "test_" + file_name
+      if(file_name.startswith("test_")):
+        new_file = "../" + schema.rstrip("testing").rstrip("_") + "/" + file_name.lstrip("test_")
+      else:
+        new_file = "../" + schema + "_testing" + "/" + "test_" + file_name
+
     if self.window.find_open_file(new_file):
       self.window.open_file(new_file)
     else:
