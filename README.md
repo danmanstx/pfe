@@ -11,7 +11,7 @@ Currently under heavy development. [trello board](https://trello.com/b/aNujDnId/
 * Save a Function to the database with output.
 * Ability to Run a [pgTAP](http://pgtap.org) test, or all open test files.
 * Pgplsql highlighting, and pgTAP output panel highlighting.
-* Quick Switch between file and test with <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>.</kbd>.
+* Quick Switch between file and test with <kbd>CMD</kbd>+<kbd>.</kbd>.
 
 ![gif](https://raw.github.com/danmanstx/pfe/master/images/pfe.gif)
 
@@ -54,7 +54,7 @@ Currently under heavy development. [trello board](https://trello.com/b/aNujDnId/
 
 ### Quick Create File
 
-* Invoke via <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>.</kbd>
+* Invoke via <kbd>CMD</kbd>+<kbd>.</kbd>
 * Attempts to switch to or create the alternating file/test based on the schema and function name.
 * this expects either a `public`/`testing` schema, or `foo` and `foo_testing` schemas as an example.
 
@@ -102,7 +102,7 @@ Go to `Preferences` -> `Package Settings` -> `Postgresql Function Editor`->`Sett
 ## Acknowledgments
 
 * Inspired by [Suran Systems](http://www.suran.com) Textmate Postgresql Bundle.
-* Inspired by [Ruby Test](https://github.com/maltize/sublime-text-2-ruby-tests).
+* Quick Switching Inspired by [Ruby Test](https://github.com/maltize/sublime-text-2-ruby-tests).
 
 ## Copyright and license
 

@@ -6,7 +6,7 @@
    { "keys": ["f3"], "command": "run_function_test" },
    { "keys": ["f4"], "command": "run_all_function_tests" },
    { "keys": ["ctrl+shift+c"], "command": "generate_file" },
-   { "keys": ["super+shift+period"], "command": "create_new_function", "context":
+   { "keys": ["super+period"], "command": "create_new_function", "context":
    [
     { "key": "selector", "operator": "not_equal", "operand": "source.ruby" },
     { "key": "selector", "operator": "not_equal", "operand": "source.python" },
