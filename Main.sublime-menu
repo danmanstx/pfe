@@ -23,6 +23,10 @@
           {
             "caption":"Run pgTAP Test",
             "command":"run_function_test"
+          },
+          {
+            "caption":"Run All Open Tests",
+            "command":"run_all_function_tests"
           }
         ]
       }

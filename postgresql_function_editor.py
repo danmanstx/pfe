@@ -51,8 +51,7 @@ class SaveDatabaseFunctionCommand(sublime_plugin.WindowCommand):
     self.output_view.run_command("append", {"characters": cmd_out})
     self.output_view.set_read_only(True)
 
-
-class runFunctionTestCommand(sublime_plugin.WindowCommand):
+class runAllFunctionTestsCommand(sublime_plugin.WindowCommand):
   def run(self):
     sublime.active_window().active_view().run_command("save")
     cmd_out = ""
@@ -65,6 +64,27 @@ class runFunctionTestCommand(sublime_plugin.WindowCommand):
       cmd_str = cmd_str + ' ' + pfe_settings.get('database') + ' ' + pfe_settings.get('port') + ' ' + pfe_settings.get('user')
       cmd_str = cmd_str + ' ' + window.file_name().replace(" ","\\ ")
       cmd_out = cmd_out + os.popen(cmd_str).read()
+    self.output_view = self.window.get_output_panel("textarea")
+    self.output_view.settings().set("color_scheme", "Packages/pfe/color.tmTheme")
+    self.output_view.set_syntax_file("Packages/pfe/scheme.tmLanguage")
+    self.window.run_command("show_panel", {"panel": "output.textarea"})
+    self.output_view.set_read_only(False)
+    self.output_view.run_command("append", {"characters": "using " + pfe_settings.get('database') + " on "+ pfe_settings.get('host')})
+    self.output_view.run_command("append", {"characters": "\nfilename: "+ sublime.active_window().active_view().file_name().split('/').pop()+ "\n\n"})
+    self.output_view.run_command("append", {"characters": "RESULT:\n"})
+    self.output_view.run_command("append", {"characters": cmd_out})
+    self.output_view.set_read_only(True)
+
+class runFunctionTestCommand(sublime_plugin.WindowCommand):
+  def run(self):
+    sublime.active_window().active_view().run_command("save")
+    cmd_out = "This is not a test."
+    if sublime.active_window().active_view().file_name().split('/').pop().startswith("test_"):
+      ruby_file = "'"+sublime.packages_path() + "/pfe/ruby/source/run_function_test.rb'"
+      cmd_str = ruby_cmd + ruby_file + ' ' + pfe_settings.get('host')
+      cmd_str = cmd_str + ' ' + pfe_settings.get('database') + ' ' + pfe_settings.get('port') + ' ' + pfe_settings.get('user')
+      cmd_str = cmd_str + ' ' + sublime.active_window().active_view().file_name().replace(" ","\\ ")
+      cmd_out = os.popen(cmd_str).read()
     self.output_view = self.window.get_output_panel("textarea")
     self.output_view.settings().set("color_scheme", "Packages/pfe/color.tmTheme")
     self.output_view.set_syntax_file("Packages/pfe/scheme.tmLanguage")
