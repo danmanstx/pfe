@@ -14,7 +14,7 @@ Plugin for Sublime Text 3 editor that helps you work directly with postgresql da
 
 ### Set Database Information
 
-* Invoke via <kbd>⌃</kbd><kbd>⇧</kbd><kbd>D</kbd> / <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>D</kbd> (menu: `Tools` -> `Postgresql Function Editor` -> `Set Databse Info`) or right-click menu
+* Invoke via <kbd>⌃</kbd>+<kbd>⇧</kbd>+<kbd>D</kbd> / <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd> (menu: `Tools` -> `Postgresql Function Editor` -> `Set Databse Info`) or right-click menu
 * set json values for `host`, `databse`, `user`, `port`
 
 
@@ -58,14 +58,19 @@ Plugin for Sublime Text 3 editor that helps you work directly with postgresql da
 
 ## Options
 
-~~Mac~~ ALL users can now opt for pretty simbols instead of text for keys.
+Sample options below.
 
 Go to `Preferences` -> `Settings - User` and add this to the file:
 
-~~`"keymaps": { "show_osx_keys": true }`~~
-
-`"keymaps": { "show_pretty_keys": true }`
-
+`{
+  "function_folder": "/tmp/postgresFunctions",
+  "host": "localhost",
+  "database": "database",
+  "user": "postgresql",
+  "password": "",
+  "port": "5432",
+  "ruby_manager": "rvm"
+}`
 
 ## Changelog
 
