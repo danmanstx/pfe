@@ -91,6 +91,6 @@ Go to `Preferences` -> `Settings - User` and add this to the file:
 
 ## Copyright and license
 
-Copyright © 2013 @[danmanstx](http://twitter.com/danmanstx)
+Copyright © 2014 @[danmanstx](http://twitter.com/danmanstx)
 
 Licensed under the [**GNU GPL**](https://gnu.org/licenses/gpl.html) license.
