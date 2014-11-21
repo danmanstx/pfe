@@ -44,7 +44,7 @@ Currently under heavy development which can be tracked at [trello](https://trell
 ![Test Output](https://raw.github.com/danmanstx/pfe/master/images/test.png)
 
 
-## dependencies
+## Dependencies
 
 * Sublime Text 3
 * working ruby install with support for [rvm](http://rvm.io), [macports](http://www.macports.org), and system ruby **be sure to set in user settings**
