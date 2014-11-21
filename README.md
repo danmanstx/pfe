@@ -1,4 +1,4 @@
-# Sublime Text Postgresql Function Editor
+# Postgresql Function Editor - Sublime Plugin
 
 Plugin for Sublime Text 3 editor that helps you work directly with postgresql database functions and run pgTAP test.
 Currently under heavy development which can be tracked at [trello](https://trello.com/b/aNujDnId/posgresql-function-editor-sublime-text)
@@ -15,28 +15,28 @@ Currently under heavy development which can be tracked at [trello](https://trell
 
 ### Set Database Information
 
-* Invoke via <kbd>⌃</kbd>+<kbd>⇧</kbd>+<kbd>D</kbd> / <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd> (menu: `Tools` -> `Postgresql Function Editor` -> `Set Databse Info`) or right-click menu
-* set json values for `host`, `databse`, `user`, `port`
+* Invoke via <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd> (menu: `Tools` -> `Postgresql Function Editor` -> `Set Databse Info`)
+* set database option values
 
 
 ![Sample Database Info File](https://raw.github.com/danmanstx/pfe/master/images/settings.png)
 
 ### Load Database functions
 
-* Invoke via <kbd>F1</kbd> (menu: `Tools` -> `Postgresql Function Editor` -> `Load Database Functions`) or right-click menu
+* Invoke via <kbd>F1</kbd> (menu: `Tools` -> `Postgresql Function Editor` -> `Load Database Functions`)
 * Loads the database functions in the side bar seperated by folders which one for each schema
 
 
 ### Save a Function to The Database
 
-* Invoke via <kbd>F2</kbd> (menu: `Tools` -> `Postgresql Function Editor` -> `Save Database Function`) or right-click menu
+* Invoke via <kbd>F2</kbd> (menu: `Tools` -> `Postgresql Function Editor` -> `Save Database Function`)
 * Saves the function to the database and opens a panel with the command output
 
 ![Saved Function](https://raw.github.com/danmanstx/pfe/master/images/save.png)
 
 ### Run [pgTAP](http://pgtap.org) Test
 
-* Invoke via <kbd>F3</kbd> (menu: `Tools` -> `Postgresql Function Editor` -> `Run pgTAP Test`) or right-click menu
+* Invoke via <kbd>F3</kbd> (menu: `Tools` -> `Postgresql Function Editor` -> `Run pgTAP Test`)
 * Saves the function to the database and opens a panel with the command output
 
 ![Test Output](https://raw.github.com/danmanstx/pfe/master/images/test.png)
@@ -47,6 +47,7 @@ Currently under heavy development which can be tracked at [trello](https://trell
 * Sublime Text 3
 * working ruby install with support for [rvm](http://rvm.io), [macports](http://www.macports.org), and system ruby
 * [Ruby gem PG](https://rubygems.org/gems/pg)
+* [pgTAP](http://pgtap.org) for pgTAP testing
 
 ## How to install
 

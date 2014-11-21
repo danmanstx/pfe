@@ -67,7 +67,7 @@ class runFunctionTestCommand(sublime_plugin.WindowCommand):
     self.output_view.set_syntax_file("Packages/pfe/scheme.tmLanguage")
     self.window.run_command("show_panel", {"panel": "output.textarea"})
     self.output_view.set_read_only(False)
-    self.output_view.run_command("append", {"characters": "using " +'database'+ " on "+ pfe_settings.get('host')})
+    self.output_view.run_command("append", {"characters": "using " + pfe_settings.get('database') + " on "+ pfe_settings.get('host')})
     self.output_view.run_command("append", {"characters": "\nfilename: "+ sublime.active_window().active_view().file_name().split('/').pop()+ "\n\n"})
     self.output_view.run_command("append", {"characters": "RESULT:\n"})
     self.output_view.run_command("append", {"characters": cmd_out})
