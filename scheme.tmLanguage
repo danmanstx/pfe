@@ -14,7 +14,7 @@
       <key>match</key>
       <string>(\bok\s\d.+)|(CREATE FUNCTION)</string>
       <key>name</key>
-      <string>test.pass</string>
+      <string>passing</string>
     </dict>
     <dict>
       <key>comment</key>
@@ -22,7 +22,7 @@
       <key>match</key>
       <string>((not)\s(ok)\s\d+.+)|(DROP FUNCTION)</string>
       <key>name</key>
-      <string>test.error</string>
+      <string>failing</string>
     </dict>
     <dict>
       <key>comment</key>
@@ -30,7 +30,7 @@
       <key>match</key>
       <string>\btest_\w+(.\w+)|\(\)</string>
       <key>name</key>
-      <string>test.fail</string>
+      <string>file_name</string>
     </dict>
     <dict>
       <key>skipped</key>
@@ -46,7 +46,7 @@
       <key>match</key>
       <string>\d(..)\d+</string>
       <key>name</key>
-      <string>test.pending</string>
+      <string>numbers</string>
     </dict>
     <dict>
       <key>comment</key>
@@ -54,7 +54,7 @@
       <key>match</key>
       <string>\".+\w\"</string>
       <key>name</key>
-      <string>test.comment</string>
+      <string>failed_message</string>
     </dict>
     <dict>
       <key>comment</key>
@@ -62,7 +62,7 @@
       <key>match</key>
       <string>(localhost)|(hosting\d+.\w+.com)</string>
       <key>name</key>
-      <string>test.skipped</string>
+      <string>host_name</string>
     </dict>
   </array>
   <key>scopeName</key>

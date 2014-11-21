@@ -27,7 +27,7 @@
       <key>name</key>
       <string>Test</string>
       <key>scope</key>
-      <string>test.pass</string>
+      <string>passing</string>
       <key>settings</key>
       <dict>
         <key>foreground</key>
@@ -38,7 +38,7 @@
       <key>name</key>
       <string>Test</string>
       <key>scope</key>
-      <string>test.error</string>
+      <string>failing</string>
       <key>settings</key>
       <dict>
         <key>foreground</key>
@@ -49,7 +49,7 @@
       <key>name</key>
       <string>Test</string>
       <key>scope</key>
-      <string>test.fail</string>
+      <string>file_name</string>
       <key>settings</key>
       <dict>
         <key>foreground</key>
@@ -71,7 +71,7 @@
       <key>name</key>
       <string>Test</string>
       <key>scope</key>
-      <string>test.skipped</string>
+      <string>host_name</string>
       <key>settings</key>
       <dict>
         <key>foreground</key>
@@ -82,7 +82,7 @@
       <key>name</key>
       <string>Test</string>
       <key>scope</key>
-      <string>test.pending</string>
+      <string>numbers</string>
       <key>settings</key>
       <dict>
         <key>foreground</key>
@@ -93,7 +93,7 @@
       <key>name</key>
       <string>Test</string>
       <key>scope</key>
-      <string>test.comment</string>
+      <string>failed_message</string>
       <key>settings</key>
       <dict>
         <key>foreground</key>
