@@ -50,7 +50,7 @@ def save_function(host, database, port, user, file, use_std_out=true)
   else
     return result.cmd_status
   end
-  rescue PG::SyntaxError => e
+  rescue Exception => e
     if use_std_out
       puts e
     else
