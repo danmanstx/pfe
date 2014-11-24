@@ -7,8 +7,8 @@ user = ARGF.argv[3] || 'posgresql'
 file = ARGF.argv[4].gsub(' ', '\\ ')
 
 saved_function = save_function(host, database, port, user, file, false)
-print saved_function
-return saved_function if saved_function.include? 'ERROR'
+puts saved_function
+# return saved_function if saved_function.include? 'ERROR'
 
 connection = test_connection(host, database, port, user)
 return connection if connection.is_a?(String)
