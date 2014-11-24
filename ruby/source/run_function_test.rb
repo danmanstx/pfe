@@ -1,5 +1,4 @@
 require_relative 'function_editor'
-require 'stringio'
 
 host = ARGF.argv[0] || 'localhost'
 database = ARGF.argv[1] || 'database'
@@ -8,6 +7,7 @@ user = ARGF.argv[3] || 'posgresql'
 file = ARGF.argv[4].gsub(' ', '\\ ')
 
 saved_function = save_function(host, database, port, user, file, false)
+print saved_function
 return saved_function if saved_function.include? 'ERROR'
 
 connection = test_connection(host, database, port, user)
