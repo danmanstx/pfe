@@ -17,8 +17,9 @@ time do
   schemas = connection.exec("SELECT schema_name FROM information_schema.schemata WHERE (schema_owner=$1 AND schema_name not in ('contrib','pgtap','pgagent')) OR schema_name='public';", [user])
   @select = 'nspname as schema,provolatile as volatile, prosrc as body,
              proname as name,procost as cost,prolang as lang,
-             pg_catalog.pg_get_function_identity_arguments(p.oid) as args,
-             pg_catalog.pg_get_function_result(p.oid) as return_type '
+             pg_catalog.pg_get_function_arguments(p.oid) as args,
+             pg_get_function_identity_arguments(p.oid) as drop_args,
+             pg_catalog.pg_get_function_result(p.oid) as return_type'
 
   schemas.each { |schema| Dir.mkdir(schema['schema_name'], 0755) }
 
@@ -28,7 +29,7 @@ time do
       file_type = file_type(function['lang'])
       post_text = "$BODY$\nLANGUAGE '#{file_type}' #{volatile_type(function['volatile'])}\nCOST #{function['cost']};"
       Dir.chdir(tmp_dir + function['schema'])
-      header = "-- DROP FUNCTION IF EXISTS  #{function['schema']}.#{function['name']}(#{function['args']}) CASCADE;\n\n"
+      header = "-- DROP FUNCTION IF EXISTS  #{function['schema']}.#{function['name']}(#{function['drop_args']}) CASCADE;\n\n"
       IO.write(function['name'] + ".#{file_type}" , "#{header}CREATE OR REPLACE FUNCTION #{function['schema']}.#{function['name']}(#{function['args']})\nRETURNS #{function['return_type']} AS\n$BODY$" + function['body'] + post_text)
     end
   end
