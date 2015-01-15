@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Pfe by danmanstx</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/danmanstx/pfe">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/danmanstx/pfe/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/danmanstx/pfe/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Pfe</h1>
+          <p>Postgresql Function Editor</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/danmanstx">danmanstx</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a id="postgresql-function-editor---sublime-plugin" class="anchor" href="#postgresql-function-editor---sublime-plugin" aria-hidden="true"><span class="octicon octicon-link"></span></a>Postgresql Function Editor - Sublime Plugin</h1>
+
+<p>Plugin for Sublime Text 3 editor that helps you work directly with postgresql database functions and run pgTAP test.
+Currently under heavy development. <a href="https://trello.com/b/aNujDnId/posgresql-function-editor-sublime-text">trello board</a></p>
+
+<p><em>Warning:</em> If you experience problems or have enhancements please <a href="https://github.com/danmanstx/pfe/issues">file an issue</a>.</p>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>Load functions from a specified database.</li>
+<li>Save a Function to the database with output.</li>
+<li>Ability to Run a <a href="http://pgtap.org">pgTAP</a> test, or all open test files.</li>
+<li>Pgplsql highlighting, and pgTAP output panel highlighting.</li>
+<li>Quick Switch between file and test with <kbd>CMD</kbd>+<kbd>.</kbd>.</li>
+</ul>
+
+<p><img src="https://raw.github.com/danmanstx/pfe/master/images/pfe.gif" alt="gif"></p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="set-database-information" class="anchor" href="#set-database-information" aria-hidden="true"><span class="octicon octicon-link"></span></a>Set Database Information</h3>
+
+<ul>
+<li>Invoke via <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd> (menu: <code>Tools</code> -&gt; <code>Postgresql Function Editor</code> -&gt; <code>Set Databse Info</code>)</li>
+<li>set database option values</li>
+</ul>
+
+<p><img src="https://raw.github.com/danmanstx/pfe/master/images/settings.png" alt="Sample Database Info File"></p>
+
+<h3>
+<a id="load-database-functions" class="anchor" href="#load-database-functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Load Database functions</h3>
+
+<ul>
+<li>Invoke via <kbd>F1</kbd> or <code>Tools</code> -&gt; <code>Postgresql Function Editor</code> -&gt; <code>Load Database Functions</code>
+</li>
+<li>Loads the database functions in the side bar seperated by folders which one for each schema.</li>
+</ul>
+
+<h3>
+<a id="save-a-function-to-the-database" class="anchor" href="#save-a-function-to-the-database" aria-hidden="true"><span class="octicon octicon-link"></span></a>Save a Function to The Database</h3>
+
+<ul>
+<li>Invoke via <kbd>F2</kbd> or <code>Tools</code> -&gt; <code>Postgresql Function Editor</code> -&gt; <code>Save Database Function</code>
+</li>
+<li>Saves the function to the database and opens a panel with the command output.</li>
+</ul>
+
+<p><img src="https://raw.github.com/danmanstx/pfe/master/images/save.png" alt="Saved Function"></p>
+
+<h3>
+<a id="run-pgtap-tests" class="anchor" href="#run-pgtap-tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Run <a href="http://pgtap.org">pgTAP</a> Test(s)</h3>
+
+<h4>
+<a id="run-test-in-active-tab" class="anchor" href="#run-test-in-active-tab" aria-hidden="true"><span class="octicon octicon-link"></span></a>Run test in active tab</h4>
+
+<ul>
+<li>Invoke via <kbd>F3</kbd> or <code>Tools</code> -&gt; <code>Postgresql Function Editor</code> -&gt; <code>Run pgTAP Test</code>
+</li>
+<li>Saves the function to the database and opens a panel with the test output.</li>
+</ul>
+
+<p><img src="https://raw.github.com/danmanstx/pfe/master/images/test.png" alt="Test Output"></p>
+
+<h4>
+<a id="run-all-tests-opened" class="anchor" href="#run-all-tests-opened" aria-hidden="true"><span class="octicon octicon-link"></span></a>Run all tests opened</h4>
+
+<ul>
+<li>Invoke via <kbd>F4</kbd> or <code>Tools</code> -&gt; <code>Postgresql Function Editor</code> -&gt; <code>Run All Opened Tests</code>
+</li>
+<li>Saves the active function to the database and opens a panel with the test output for all open test.</li>
+</ul>
+
+<h3>
+<a id="quick-switchcreate-file" class="anchor" href="#quick-switchcreate-file" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quick Switch/Create File</h3>
+
+<ul>
+<li>Invoke via <kbd>CMD</kbd>+<kbd>.</kbd> or <kbd>CMD</kbd>+<kbd>Ctrl</kbd>+<kbd>.</kbd> for same pane split.</li>
+<li>Attempts to switch to or create the alternating file/test based on the schema and function name.</li>
+<li>this expects either a <code>public</code>/<code>testing</code> schema, or <code>foo</code> and <code>foo_testing</code> schemas as an example.</li>
+</ul>
+
+<h2>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h2>
+
+<ul>
+<li>Sublime Text 3</li>
+<li>working ruby install with support for <a href="http://rvm.io">rvm</a>, <a href="http://www.macports.org">macports</a>, and system ruby <strong>be sure to set in user settings</strong>
+</li>
+<li>
+<a href="https://rubygems.org/gems/pg">Ruby gem PG</a> <code>gem install pg</code>
+</li>
+<li>
+<a href="http://pgtap.org">pgTAP</a> for pgTAP testing</li>
+</ul>
+
+<h2>
+<a id="how-to-install" class="anchor" href="#how-to-install" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to install</h2>
+
+<ol>
+<li>
+<p>checkout the repo and install it in your sublime text Packages folder,</p>
+
+<p>on mac <code>cd "$HOME/Library/Application Support/Sublime Text 3/Packages"</code></p>
+</li>
+<li><p>Restart ST editor (if required)</p></li>
+</ol>
+
+<p><strong>COMING SOON</strong> install with <a href="http://wbond.net/sublime_packages/package_control">Package Control</a></p>
+
+<h2>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h2>
+
+<p>Sample options below.</p>
+
+<p>Go to <code>Preferences</code> -&gt; <code>Package Settings</code> -&gt; <code>Postgresql Function Editor</code>-&gt;<code>Settings - User</code> and add this to the file or copy and edit from <code>Settings - Default</code> :</p>
+
+<pre>
+{
+  "function_folder": "/tmp/postgresFunctions",
+  "host": "localhost",
+  "database": "database",
+  "user": "postgresql",
+  "password": "",
+  "port": "5432",
+  "ruby_manager": "rvm"
+}
+</pre>
+
+<h2>
+<a id="changelog" class="anchor" href="#changelog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Changelog</h2>
+
+<h3>
+<a id="v100" class="anchor" href="#v100" aria-hidden="true"><span class="octicon octicon-link"></span></a>v1.0.0</h3>
+
+<ul>
+<li>Initial release</li>
+</ul>
+
+<h2>
+<a id="acknowledgments" class="anchor" href="#acknowledgments" aria-hidden="true"><span class="octicon octicon-link"></span></a>Acknowledgments</h2>
+
+<ul>
+<li>Inspired by <a href="http://www.suran.com">Suran Systems</a> Textmate Postgresql Bundle.</li>
+<li>Quick Switching Inspired by <a href="https://github.com/maltize/sublime-text-2-ruby-tests">Ruby Test</a>.</li>
+</ul>
+
+<h2>
+<a id="copyright-and-license" class="anchor" href="#copyright-and-license" aria-hidden="true"><span class="octicon octicon-link"></span></a>Copyright and license</h2>
+
+<p>Copyright © 2014 Danny Peters, @<a href="http://twitter.com/danmanstx">danmanstx</a></p>
+
+<p>Licensed under the <a href="https://gnu.org/licenses/gpl.html"><strong>GNU GPL</strong></a> license.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
