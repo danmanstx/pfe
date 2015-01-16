@@ -61,6 +61,8 @@ end
 def run_single_test(connection, schema, test)
   function = "SELECT * FROM pgtap.runtests('#{schema}','#{test}'); "
   results = ''
+  a = nil
+  connection.set_notice_processor {|msg| results += "#{msg.to_s.chomp.inspect.split('\n')[0][1..-1]}\n"}
   connection.exec('BEGIN;')
   result = connection.exec(function)
   connection.exec('ROLLBACK;')
