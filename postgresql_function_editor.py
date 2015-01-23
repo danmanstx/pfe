@@ -123,7 +123,8 @@ class CreateNewFunctionCommand(sublime_plugin.WindowCommand):
     split_view = pfe_settings.get('should_split_view')
     if split_view is True:
       self.split_view()
-    self.window.open_file(input)
+    newFile = self.window.open_file(input)
+    newFile.run_command("new_test_load")
 
   def split_view(self):
     if self.window.num_groups() == 1:
@@ -135,6 +136,25 @@ class CreateNewFunctionCommand(sublime_plugin.WindowCommand):
                       })
       self.window.run_command('focus_group', {"group": 0})
       self.window.run_command('move_to_group', {"group": 1})
+
+class NewTestLoadCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+      sublime.set_timeout(lambda: self.create_test_function(self.view), 10)
+
+    def create_test_function(self, view):
+      if not self.view.is_loading():
+          self.view.run_command('insert_text',{ 'arg': self.view.file_name()})
+      else:
+          sublime.set_timeout(lambda: self.create_test_function(self.view), 10)
+
+class InsertText(sublime_plugin.TextCommand):
+  def run(self, edit, arg):
+    file_array = arg.split('/')
+    print(file_array)
+    schema = file_array[3]
+    function_name = file_array[4].split('.')[0]
+    function = "-- DROP FUNCTION IF EXISTS  "+schema+"."+function_name+"() CASCADE;\nCREATE OR REPLACE FUNCTION "+schema+"."+function_name+"()\nRETURNS SETOF text AS\n$BODY$\nDECLARE\nBEGIN\n\n\tRETURN NEXT pgTAP.pass('dummy test');\n\nEND;\n$BODY$\nLANGUAGE 'plpgsql' VOLATILE\nCOST 100;"
+    self.view.insert(edit, 0, function)
 
 class SetDatabaseCommand(sublime_plugin.WindowCommand):
   def run(self):
