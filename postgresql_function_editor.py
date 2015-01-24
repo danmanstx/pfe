@@ -143,17 +143,17 @@ class NewTestLoadCommand(sublime_plugin.TextCommand):
 
     def create_test_function(self, view):
       if not self.view.is_loading():
-          self.view.run_command('insert_test_text',{ 'arg': self.view.file_name()})
+          self.view.run_command('insert_test_text',{ 'filename': self.view.file_name()})
       else:
           sublime.set_timeout(lambda: self.create_test_function(self.view), 10)
 
 class InsertTestText(sublime_plugin.TextCommand):
-  def run(self, edit, arg):
-    file_array = arg.split('/')
+  def run(self, edit, filename):
+    file_array = filename.split('/')
     print(file_array)
     schema = file_array[3]
     function_name = file_array[4].split('.')[0]
-    function = "-- DROP FUNCTION IF EXISTS  "+schema+"."+function_name+"() CASCADE;\nCREATE OR REPLACE FUNCTION "+schema+"."+function_name+"()\nRETURNS SETOF text AS\n$BODY$\nDECLARE\nBEGIN\n\n\tRETURN NEXT pgTAP.pass('dummy test');\n\nEND;\n$BODY$\nLANGUAGE 'plpgsql' VOLATILE\nCOST 100;"
+    function = "-- DROP FUNCTION IF EXISTS  {0}.{1}() CASCADE;\nCREATE OR REPLACE FUNCTION {0}.{1}()\nRETURNS SETOF text AS\n$BODY$\nDECLARE\nBEGIN\n\n\tRETURN NEXT pgTAP.pass('dummy test');\n\nEND;\n$BODY$\nLANGUAGE 'plpgsql' VOLATILE\nCOST 100;".format(schema,function_name)
     self.view.insert(edit, 0, function)
 
 class SetDatabaseCommand(sublime_plugin.WindowCommand):
