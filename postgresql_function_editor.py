@@ -143,11 +143,11 @@ class NewTestLoadCommand(sublime_plugin.TextCommand):
 
     def create_test_function(self, view):
       if not self.view.is_loading():
-          self.view.run_command('insert_text',{ 'arg': self.view.file_name()})
+          self.view.run_command('insert_test_text',{ 'arg': self.view.file_name()})
       else:
           sublime.set_timeout(lambda: self.create_test_function(self.view), 10)
 
-class InsertText(sublime_plugin.TextCommand):
+class InsertTestText(sublime_plugin.TextCommand):
   def run(self, edit, arg):
     file_array = arg.split('/')
     print(file_array)
