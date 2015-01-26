@@ -149,12 +149,12 @@ class NewTestLoadCommand(sublime_plugin.TextCommand):
 
 class InsertTestText(sublime_plugin.TextCommand):
   def run(self, edit, filename):
-    file_array = filename.split('/')
-    print(file_array)
-    schema = file_array[3]
-    function_name = file_array[4].split('.')[0]
-    function = "-- DROP FUNCTION IF EXISTS  {0}.{1}() CASCADE;\nCREATE OR REPLACE FUNCTION {0}.{1}()\nRETURNS SETOF text AS\n$BODY$\nDECLARE\nBEGIN\n\n\tRETURN NEXT pgTAP.pass('dummy test');\n\nEND;\n$BODY$\nLANGUAGE 'plpgsql' VOLATILE\nCOST 100;".format(schema,function_name)
-    self.view.insert(edit, 0, function)
+    if self.view.size() == 0:
+      file_array = filename.split('/')
+      schema = file_array[3]
+      function_name = file_array[4].split('.')[0]
+      function = "-- DROP FUNCTION IF EXISTS  {0}.{1}() CASCADE;\nCREATE OR REPLACE FUNCTION {0}.{1}()\nRETURNS SETOF text AS\n$BODY$\nDECLARE\nBEGIN\n\n\tRETURN NEXT pgTAP.pass('dummy test');\n\nEND;\n$BODY$\nLANGUAGE 'plpgsql' VOLATILE\nCOST 100;".format(schema,function_name)
+      self.view.insert(edit, 0, function)
 
 class SetDatabaseCommand(sublime_plugin.WindowCommand):
   def run(self):
