@@ -102,14 +102,16 @@ class CreateNewFunctionCommand(sublime_plugin.WindowCommand):
     file_name = sublime.active_window().active_view().file_name().split('/').pop()
     if (schema == "testing") or (schema == "public"):
         if schema == "testing":
-          new_file = "../"+"public" + "/" + file_name.lstrip("test_")
+          new_file = "../"+"public" + "/" + file_name[5:]
         else:
           new_file = "../"+"testing" + "/" + "test_" + file_name
     else:
       if(file_name.startswith("test_")):
-        new_file = "../" + schema.rstrip("testing").rstrip("_") + "/" + file_name.lstrip("test_")
+        print(file_name)
+        new_file = "../" + schema.rstrip("testing").rstrip("_") + "/" + file_name[5:]
       else:
         new_file = "../" + schema + "_testing" + "/" + "test_" + file_name
+
     if self.window.find_open_file(new_file):
       if should_split_view is True:
         self.split_view()
@@ -124,7 +126,7 @@ class CreateNewFunctionCommand(sublime_plugin.WindowCommand):
     if split_view is True:
       self.split_view()
     newFile = self.window.open_file(input)
-    newFile.run_command("new_test_load")
+    newFile.run_command("new_function_load")
 
   def split_view(self):
     if self.window.num_groups() == 1:
@@ -137,15 +139,18 @@ class CreateNewFunctionCommand(sublime_plugin.WindowCommand):
       self.window.run_command('focus_group', {"group": 0})
       self.window.run_command('move_to_group', {"group": 1})
 
-class NewTestLoadCommand(sublime_plugin.TextCommand):
+class NewFunctionLoadCommand(sublime_plugin.TextCommand):
     def run(self, edit):
-      sublime.set_timeout(lambda: self.create_test_function(self.view), 10)
+      sublime.set_timeout(lambda: self.create_function(self.view), 10)
 
-    def create_test_function(self, view):
+    def create_function(self, view):
       if not self.view.is_loading():
-          self.view.run_command('insert_test_text',{ 'filename': self.view.file_name()})
+          if self.view.file_name().split('/').pop().split('.')[0].startswith("test_"):
+            self.view.run_command('insert_test_text',{ 'filename': self.view.file_name()})
+          else:
+            self.view.run_command('insert_function_text',{ 'filename': self.view.file_name()})
       else:
-          sublime.set_timeout(lambda: self.create_test_function(self.view), 10)
+          sublime.set_timeout(lambda: self.create_function(self.view), 10)
 
 class InsertTestText(sublime_plugin.TextCommand):
   def run(self, edit, filename):
@@ -153,8 +158,18 @@ class InsertTestText(sublime_plugin.TextCommand):
       file_array = filename.split('/')
       schema = file_array[3]
       function_name = file_array[4].split('.')[0]
-      function = "-- DROP FUNCTION IF EXISTS  {0}.{1}() CASCADE;\nCREATE OR REPLACE FUNCTION {0}.{1}()\nRETURNS SETOF text AS\n$BODY$\nDECLARE\nBEGIN\n\n\tRETURN NEXT pgTAP.pass('dummy test');\n\nEND;\n$BODY$\nLANGUAGE 'plpgsql' VOLATILE\nCOST 100;".format(schema,function_name)
+      function = "-- DROP FUNCTION IF EXISTS {0}.{1}() CASCADE;\n\nCREATE OR REPLACE FUNCTION {0}.{1}()\nRETURNS SETOF text AS\n$BODY$\nDECLARE\n\nBEGIN\n\n\tRETURN NEXT pgTAP.pass('dummy test');\n\nEND;\n$BODY$\nLANGUAGE 'plpgsql' VOLATILE\nCOST 100;".format(schema,function_name)
       self.view.insert(edit, 0, function)
+
+class InsertFunctionText(sublime_plugin.TextCommand):
+  def run(self, edit, filename):
+    if self.view.size() == 0:
+      file_array = filename.split('/')
+      schema = file_array[3]
+      function_name = file_array[4].split('.')[0]
+      function = "-- DROP FUNCTION IF EXISTS {0}.{1}() CASCADE;\n\nCREATE OR REPLACE FUNCTION {0}.{1}()\nRETURNS void AS\n$BODY$\nDECLARE\n\nBEGIN\n\n\nEND;\n$BODY$\nLANGUAGE 'plpgsql' VOLATILE\nCOST 100;".format(schema,function_name)
+      self.view.insert(edit, 0, function)
+
 
 class SetDatabaseCommand(sublime_plugin.WindowCommand):
   def run(self):
@@ -223,3 +238,99 @@ class GetSyntaxCommand(sublime_plugin.TextCommand):
   def run(self, edit):
     for region in self.view.sel():
       syntax = self.view.encoding()
+
+#
+# BELOW IS FROM SUBLIME QUICK CREATE FILE, but has been modified
+#
+
+class QuickCreateFileCreatorBase(sublime_plugin.WindowCommand):
+    relative_paths = []
+    full_torelative_paths = {}
+    rel_path_start = ''
+
+    def doCommand(self):
+        self.build_relative_paths()
+        if len(self.relative_paths) == 1:
+            self.selected_dir = self.relative_paths[0]
+            self.selected_dir = self.full_torelative_paths[self.selected_dir]
+            self.window.show_input_panel(self.INPUT_PANEL_CAPTION, '', self.file_name_input, None, None)
+        elif len(self.relative_paths) > 1:
+            self.move_current_directory_to_top()
+            self.window.show_quick_panel(self.relative_paths, self.dir_selected)
+        else:
+            view = self.window.active_view()
+            self.selected_dir = os.path.dirname(view.file_name())
+            self.window.show_input_panel(self.INPUT_PANEL_CAPTION, '', self.file_name_input, None, None)
+
+    def build_relative_paths(self):
+        folders = self.window.folders()
+        view = self.window.active_view()
+        self.relative_paths = []
+        self.full_torelative_paths = {}
+        for path in folders:
+            rootfolders = os.path.split(path)[-1]
+            self.rel_path_start = os.path.split(path)[0]
+            self.full_torelative_paths[rootfolders] = path
+            self.relative_paths.append(rootfolders)
+
+
+            for base, dirs, files in os.walk(path):
+                for dir in dirs:
+                    relative_path = os.path.relpath(os.path.join(base, dir), self.rel_path_start)
+                    self.full_torelative_paths[relative_path] = os.path.join(base, dir)
+                    self.relative_paths.append(relative_path)
+
+    def move_current_directory_to_top(self):
+        view = self.window.active_view()
+        if view and view.file_name():
+            cur_dir = os.path.relpath(os.path.dirname(view.file_name()), self.rel_path_start)
+            if cur_dir in self.full_torelative_paths:
+                i = self.relative_paths.index(cur_dir)
+                self.relative_paths.insert(0, self.relative_paths.pop(i))
+            else:
+                self.relative_paths.insert(0, os.path.dirname(view.file_name()))
+        return
+
+    def dir_selected(self, selected_index):
+        function_prefix = ''
+        if selected_index != -1:
+            self.selected_dir = self.relative_paths[selected_index]
+            self.selected_dir = self.full_torelative_paths[self.selected_dir]
+            if self.selected_dir.endswith('_testing'):
+                function_prefix = 'test_'
+            self.window.show_input_panel(self.INPUT_PANEL_CAPTION, function_prefix, self.file_name_input, None, None)
+
+    def file_name_input(self, file_name):
+        full_path = os.path.join(self.selected_dir, file_name)
+
+        if os.path.lexists(full_path):
+            sublime.error_message('File already exists:\n%s' % full_path)
+            return
+        else:
+            self.create_and_open_file(full_path + '.plpgsql')
+
+        self.window.run_command("refresh_folder_list")
+
+    def create(self, filename):
+        base, filename = os.path.split(filename)
+        self.create_folder(base)
+
+    def create_folder(self, base):
+        if not os.path.exists(base):
+            parent = os.path.split(base)[0]
+            if not os.path.exists(parent):
+                self.create_folder(parent)
+            os.mkdir(base)
+
+
+class QuickCreateFileCommand(QuickCreateFileCreatorBase):
+    INPUT_PANEL_CAPTION = 'File name:'
+
+    def run(self):
+        self.doCommand()
+
+    def create_and_open_file(self, path):
+        if not os.path.exists(path):
+            self.create(path)
+        newFile = self.window.open_file(path)
+        newFile.run_command("new_function_load")

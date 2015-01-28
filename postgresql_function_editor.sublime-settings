@@ -4,5 +4,5 @@
   "database": "database",
   "user": "postgresql",
   "password": "",
-  "port": "5432"
+  "port": "5432",
 }

@@ -32,5 +32,9 @@
   },
   { "caption": "Postgresql Function Editor: Run All Opened pgTAP Tests",
     "command": "run_all_function_tests"
-  }
+  },
+  {
+    "caption": "Postgresql Function Editor: Create New Function",
+    "command": "quick_create_file"
+  },
 ]
