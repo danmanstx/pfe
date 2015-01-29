@@ -10,20 +10,20 @@
      "args": {"should_split_view": false},
      "context":
    [
-      { "key": "selector", "operator": "equal",  "match_all": true, "operand": "(source.plpgsql,source.plperlu,source.sql,source.perl)" },
+      { "key": "selector", "operator": "equal",  "match_all": true, "operand": "(source.plpgsql,source.plperlu,source.sql,source.perl,source.plpgsql_psfunc,source.pgsql)" },
    ]
    },
    { "keys": ["super+ctrl+period"], "command": "create_new_function",
       "args": {"should_split_view": true},
       "context":
       [
-        { "key": "selector", "operator": "equal",  "match_all": true, "operand": "(source.plpgsql,source.plperlu,source.sql,source.perl)" },
+        { "key": "selector", "operator": "equal",  "match_all": true, "operand": "(source.plpgsql,source.plperlu,source.sql,source.perl,source.plpgsql_psfunc,source.pgsql)" },
       ]
   },
   { "keys": ["super+alt+o"], "command": "quick_create_file",
     "context":
       [
-        { "key": "selector", "operator": "equal",  "match_all": true, "operand": "(source.plpgsql,source.plperlu,source.sql,source.perl)" },
+        { "key": "selector", "operator": "equal",  "match_all": true, "operand": "(source.plpgsql,source.plperlu,source.sql,source.perl,source.plpgsql_psfunc,source.pgsql)" },
       ]},
   { "keys": ["f5"], "command": "refresh_folder_list" },
 ]
