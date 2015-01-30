@@ -1,43 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Pfe by danmanstx</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="Pfe : Postgresql Function Editor">
 
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Pfe</title>
   </head>
+
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/danmanstx/pfe">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/danmanstx/pfe/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/danmanstx/pfe/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
 
-    <div class="wrapper">
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/danmanstx/pfe">View on GitHub</a>
 
-      <section>
-        <div id="title">
-          <h1>Pfe</h1>
-          <p>Postgresql Function Editor</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/danmanstx">danmanstx</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
-        </div>
+          <h1 id="project_title">Pfe</h1>
+          <h2 id="project_tagline">Postgresql Function Editor</h2>
 
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/danmanstx/pfe/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/danmanstx/pfe/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <h1>
 <a id="postgresql-function-editor---sublime-plugin" class="anchor" href="#postgresql-function-editor---sublime-plugin" aria-hidden="true"><span class="octicon octicon-link"></span></a>Postgresql Function Editor - Sublime Plugin</h1>
 
@@ -139,15 +132,33 @@ Currently under heavy development. <a href="https://trello.com/b/aNujDnId/posgre
 </ul>
 
 <h2>
-<a id="how-to-install" class="anchor" href="#how-to-install" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to install</h2>
+<a id="how-to-install-on-a-mac" class="anchor" href="#how-to-install-on-a-mac" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to install on a Mac</h2>
 
 <ol>
-<li>
-<p>checkout the repo and install it in your sublime text Packages folder,</p>
-
-<p>on mac <code>cd "$HOME/Library/Application Support/Sublime Text 3/Packages"</code></p>
+<li>install <a href="https://rvm.io">rvm</a><br>
+<code>gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3</code>
+<code>\curl -sSL https://get.rvm.io | bash -s stable</code>
 </li>
-<li><p>Restart ST editor (if required)</p></li>
+<li>install ruby in rvm<br>
+<code>rvm install 2.1.5</code>
+</li>
+<li><a href="http://postgresapp.com">install postgresql app</a></li>
+<li>use header from postgresql app with rvm ruby to install <code>gem pg</code><br>
+<code>gem install pg -- --with-pg-include='/Applications/Postgres.app/Contents/Versions/9.4/include/' --with-pg-config=/Applications/Postgres.app/Contents/Versions/9.4/bin/pg_config</code>
+</li>
+<li>install <a href="http://www.sublimetext.com/3">sublime</a> <em>if needed</em>
+</li>
+<li>install <a href="https://packagecontrol.io/installation">package manager</a> <em>if needed</em>
+</li>
+<li>run the following to install Xcode command line tools <em>if needed</em><br>
+<code>xcode-select --install</code>
+</li>
+<li>clone repo for pfe <br>
+<code>git clone https://github.com/danmanstx/pfe.git</code>
+</li>
+<li>before closing sublime add <code>pfe</code> to your <code>installed packages</code> located here:<br>
+<code>Sublime text --&gt; Preferences --&gt; Package Settings --&gt; Package Control --&gt; Settings - User</code>
+</li>
 </ol>
 
 <p><strong>COMING SOON</strong> install with <a href="http://wbond.net/sublime_packages/package_control">Package Control</a></p>
@@ -196,9 +207,16 @@ Currently under heavy development. <a href="https://trello.com/b/aNujDnId/posgre
 
 <p>Licensed under the <a href="https://gnu.org/licenses/gpl.html"><strong>GNU GPL</strong></a> license.</p>
       </section>
-
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Pfe maintained by <a href="https://github.com/danmanstx">danmanstx</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -209,6 +227,7 @@ Currently under heavy development. <a href="https://trello.com/b/aNujDnId/posgre
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
+
 
   </body>
 </html>
