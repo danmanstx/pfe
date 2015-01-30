@@ -65,13 +65,24 @@ Currently under heavy development. [trello board](https://trello.com/b/aNujDnId/
 * [Ruby gem PG](https://rubygems.org/gems/pg) `gem install pg`
 * [pgTAP](http://pgtap.org) for pgTAP testing
 
-## How to install
+## How to install on a Mac
 
-1. checkout the repo and install it in your sublime text Packages folder,
-
-   on mac `cd "$HOME/Library/Application Support/Sublime Text 3/Packages"`
-
-2. Restart ST editor (if required)
+1. install [rvm](https://rvm.io)<br>
+  `gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3`
+`\curl -sSL https://get.rvm.io | bash -s stable`
+2. install ruby in rvm<br>
+`rvm install 2.1.5`
+3. [install postgresql app](http://postgresapp.com)
+4. use header from postgresql app with rvm ruby to install `gem pg`<br>
+  `gem install pg -- --with-pg-include='/Applications/Postgres.app/Contents/Versions/9.4/include/' --with-pg-config=/Applications/Postgres.app/Contents/Versions/9.4/bin/pg_config`
+5. install [sublime](http://www.sublimetext.com/3) *if needed*
+6. install [package manager](https://packagecontrol.io/installation) *if needed*
+7. run the following to install Xcode command line tools *if needed*<br>
+  `xcode-select --install`
+8. clone repo for pfe <br>
+  `git clone https://github.com/danmanstx/pfe.git`
+9. before closing sublime add `pfe` to your `installed packages` located here:<br>
+  `Sublime text --> Preferences --> Package Settings --> Package Control --> Settings - User`
 
 **COMING SOON** install with [Package Control](http://wbond.net/sublime_packages/package_control)
 
