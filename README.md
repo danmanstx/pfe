@@ -1,9 +1,8 @@
 # Postgresql Function Editor - Sublime Plugin
 
-Plugin for Sublime Text 3 editor that helps you work directly with postgresql database functions and run pgTAP test.
-Currently under heavy development. [trello board](https://trello.com/b/aNujDnId/posgresql-function-editor-sublime-text)
+Plugin for [Sublime Text 3](http://www.sublimetext.com) that helps you work directly with postgresql database functions and run [pgTAP](http://pgtap.org) test. [Trello board](https://trello.com/b/aNujDnId/posgresql-function-editor-sublime-text)
 
-*Warning:* If you experience problems or have enhancements please [file an issue](https://github.com/danmanstx/pfe/issues).
+*Warning:* If you experience problems or have suggestions please [file an issue](https://github.com/danmanstx/pfe/issues).
 
 ## Features
 
@@ -12,6 +11,7 @@ Currently under heavy development. [trello board](https://trello.com/b/aNujDnId/
 * Ability to Run a [pgTAP](http://pgtap.org) test, or all open test files.
 * Pgplsql highlighting, and pgTAP output panel highlighting.
 * Quick Switch between file and test with <kbd>CMD</kbd>+<kbd>.</kbd>.
+* Quick Create new plpgsql functions with <kbd>CMD</kbd>+<kbd>ALT</kbd>+<kbd>o</kbd>.
 
 ![gif](https://raw.github.com/danmanstx/pfe/master/images/pfe.gif)
 
@@ -57,6 +57,11 @@ Currently under heavy development. [trello board](https://trello.com/b/aNujDnId/
 * Invoke via <kbd>CMD</kbd>+<kbd>.</kbd> or <kbd>CMD</kbd>+<kbd>Ctrl</kbd>+<kbd>.</kbd> for same pane split.
 * Attempts to switch to or create the alternating file/test based on the schema and function name.
 * this expects either a `public`/`testing` schema, or `foo` and `foo_testing` schemas as an example.
+
+### Create New Function
+
+* Invoke via <kbd>CMD</kbd>+<kbd>ALT</kbd>+<kbd>o</kbd>
+* Brings up a list of schemas, and then allows you to specify the exact function you would like. Then use <kbd>F2</kbd> to save this function into the current database.
 
 ## Dependencies
 
@@ -114,6 +119,13 @@ Go to `Preferences` -> `Package Settings` -> `Postgresql Function Editor`->`Sett
 
 * Inspired by [Suran Systems](http://www.suran.com) Textmate Postgresql Bundle.
 * Quick Switching Inspired by [Ruby Test](https://github.com/maltize/sublime-text-2-ruby-tests).
+* Quick File Creation Inspired By [Sublime Quick File Creator](https://github.com/noklesta/SublimeQuickFileCreator)
+
+## Roadmap
+
+* Add plpgsql Snippets for better autocompletion.
+* Change to psql build system for easier install and use.
+* Creation of atom plugin because sublime's future is uncertain.
 
 ## Copyright and license
 
