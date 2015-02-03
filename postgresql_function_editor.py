@@ -14,7 +14,6 @@ def plugin_loaded():
     ruby_cmd = '/opt/local/bin/ruby ';
   else:
     ruby_cmd = '/usr/bin/ruby ';
-
   ruby_files_dir = sublime.packages_path() + "/pfe/ruby/source/"
 
 class LoadDatabaseFunctionsCommand(sublime_plugin.WindowCommand):
@@ -170,7 +169,6 @@ class InsertFunctionText(sublime_plugin.TextCommand):
       function = "-- DROP FUNCTION IF EXISTS {0}.{1}() CASCADE;\n\nCREATE OR REPLACE FUNCTION {0}.{1}()\nRETURNS void AS\n$BODY$\nDECLARE\n\nBEGIN\n\n\nEND;\n$BODY$\nLANGUAGE 'plpgsql' VOLATILE\nCOST 100;".format(schema,function_name)
       self.view.insert(edit, 0, function)
 
-
 class SetDatabaseCommand(sublime_plugin.WindowCommand):
   def run(self):
     self.window.show_input_panel("set database:",
@@ -180,7 +178,6 @@ class SetDatabaseCommand(sublime_plugin.WindowCommand):
   def on_done(self, input):
     pfe_settings.set("database", input)
     sublime.save_settings("postgresql_function_editor.sublime-settings")
-
 
 class SetHostCommand(sublime_plugin.WindowCommand):
   def run(self):
@@ -321,7 +318,6 @@ class QuickCreateFileCreatorBase(sublime_plugin.WindowCommand):
             if not os.path.exists(parent):
                 self.create_folder(parent)
             os.mkdir(base)
-
 
 class QuickCreateFileCommand(QuickCreateFileCreatorBase):
     INPUT_PANEL_CAPTION = 'File name:'
