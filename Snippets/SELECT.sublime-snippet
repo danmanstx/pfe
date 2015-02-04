@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[SELECT * FROM ${1:table} WHERE ${2:column}=${4:constrant};]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>select</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.plpgsql,source.plperlu,source.sql,source.plpgsql_psfunc,source.pgsql</scope>
+    <!-- Optional: Set displayed description of snippet -->
+    <description>select statement</description>
+</snippet>

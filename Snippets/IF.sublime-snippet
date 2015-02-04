@@ -1,0 +1,13 @@
+<snippet>
+    <content><![CDATA[
+IF $1 THEN
+    $0
+END IF;
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>if</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.plpgsql,source.plperlu,source.sql,source.plpgsql_psfunc,source.pgsql</scope>
+    <!-- Optional: Set displayed description of snippet -->
+    <description>IF</description>
+</snippet>

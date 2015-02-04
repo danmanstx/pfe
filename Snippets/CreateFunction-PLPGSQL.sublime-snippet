@@ -1,0 +1,21 @@
+<snippet>
+    <content><![CDATA[
+CREATE OR REPLACE FUNCTION ${1:schema}.${2:function_name(PARAM)}
+RETURNS ${3:RETURN_TYPE} AS
+\$BODY\$
+DECLARE
+    ${4:variables};
+BEGIN
+    ${5}
+END;
+\$BODY\$;
+LANGUAGE 'plpgsql' VOLATILE
+COST 100;
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>cfunction</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.plpgsql,source.plperlu,source.sql,source.plpgsql_psfunc,source.pgsql</scope>
+    <!-- Optional: Set displayed description of snippet -->
+    <description>Create PLPGSQL Function</description>
+</snippet>
