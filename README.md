@@ -12,6 +12,7 @@ Plugin for [Sublime Text 3](http://www.sublimetext.com) that helps you work dire
 * Pgplsql highlighting, and pgTAP output panel highlighting.
 * Quick Switch between file and test with <kbd>CMD</kbd>+<kbd>.</kbd>.
 * Quick Create new plpgsql functions with <kbd>CMD</kbd>+<kbd>ALT</kbd>+<kbd>o</kbd>.
+* Common Completions and Snippets for `plpgsql`
 
 ![gif](https://raw.github.com/danmanstx/pfe/master/images/pfe.gif)
 
@@ -73,7 +74,7 @@ Plugin for [Sublime Text 3](http://www.sublimetext.com) that helps you work dire
 ## How to install on a Mac
 
 1. install [rvm](https://rvm.io)<br>
-  `gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3`
+  `gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3`<br>
 `\curl -sSL https://get.rvm.io | bash -s stable`
 2. install ruby in rvm<br>
 `rvm install 2.1.5`
@@ -123,7 +124,7 @@ Go to `Preferences` -> `Package Settings` -> `Postgresql Function Editor`->`Sett
 
 ## Roadmap
 
-* Add plpgsql Snippets for better autocompletion.
+* Add more plpgsql Snippets for better autocompletion.
 * Change to psql build system for easier install and use.
 * Creation of atom plugin because sublime's future is uncertain.
 
