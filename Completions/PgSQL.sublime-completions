@@ -1,5 +1,5 @@
 {
-    "scope": [ "source.sql", "source.plpgsql", "source.plpgsql_psfunc"],
+    "scope": [ "source.sql, source.plpgsql, source.plpgsql_psfunc"],
     "completions":
     [
         "ALL",
