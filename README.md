@@ -48,7 +48,7 @@ Plugin for [Sublime Text 3](http://www.sublimetext.com) that helps you work dire
 
 ![Test Output](https://raw.github.com/danmanstx/pfe/master/images/test.png)
 
-#### Run all tests opened
+#### Run all opened tests 
 
 * Invoke via <kbd>F4</kbd> or `Tools` -> `Postgresql Function Editor` -> `Run All Opened Tests`
 * Saves the active function to the database and opens a panel with the test output for all open test.
