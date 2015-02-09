@@ -320,7 +320,7 @@ class QuickCreateFileCreatorBase(sublime_plugin.WindowCommand):
             os.mkdir(base)
 
 class QuickCreateFileCommand(QuickCreateFileCreatorBase):
-    INPUT_PANEL_CAPTION = 'File name:'
+    INPUT_PANEL_CAPTION = 'Function Name:'
 
     def run(self):
         self.doCommand()
