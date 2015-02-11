@@ -61,11 +61,11 @@ end
 def run_single_test(connection, schema, test)
   function = "SELECT * FROM pgtap.runtests('#{schema}','#{test}'); "
   results = ''
-  connection.set_notice_processor {|msg| results += "#{msg.to_s.split('CONTEXT:')[0]}"}
+  connection.set_notice_processor { |msg| results += "#{msg.to_s.split('CONTEXT:')[0]}" }
   connection.exec('BEGIN;')
   result = connection.exec(function)
   connection.exec('ROLLBACK;')
-  result.each { |line | results += line['runtests'].to_s + "\n" }
+  result.each { |line| results += line['runtests'].to_s + "\n" }
   return results
   rescue Exception => e
     return e

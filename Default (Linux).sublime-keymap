@@ -6,11 +6,24 @@
    { "keys": ["f3"], "command": "run_function_test" },
    { "keys": ["f4"], "command": "run_all_function_tests" },
    { "keys": ["ctrl+shift+c"], "command": "generate_file" },
-   { "keys": ["super+period"], "command": "create_new_function", "context":
+   { "keys": ["super+period"], "command": "create_new_function",
+     "args": {"should_split_view": false},
+     "context":
    [
-    { "key": "selector", "operator": "not_equal", "operand": "source.ruby" },
-    { "key": "selector", "operator": "not_equal", "operand": "source.python" },
-    { "key": "selector", "operator": "not_equal", "operand": "source.json" }
+      { "key": "selector", "operator": "equal",  "match_all": true, "operand": "(source.plpgsql,source.plperlu,source.sql,source.perl,source.plpgsql_psfunc,source.pgsql,text.plain)" },
    ]
-   }
+   },
+   { "keys": ["super+ctrl+period"], "command": "create_new_function",
+      "args": {"should_split_view": true},
+      "context":
+      [
+        { "key": "selector", "operator": "equal",  "match_all": true, "operand": "(source.plpgsql,source.plperlu,source.sql,source.perl,source.plpgsql_psfunc,source.pgsql,text.plain)" },
+      ]
+  },
+  { "keys": ["super+alt+o"], "command": "quick_create_file",
+    "context":
+      [
+        { "key": "selector", "operator": "equal",  "match_all": true, "operand": "(source.plpgsql,source.plperlu,source.sql,source.perl,source.plpgsql_psfunc,source.pgsql,text.plain)" },
+      ]},
+  { "keys": ["f5"], "command": "refresh_folder_list" },
 ]
