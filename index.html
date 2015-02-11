@@ -41,10 +41,9 @@
         <h1>
 <a id="postgresql-function-editor---sublime-plugin" class="anchor" href="#postgresql-function-editor---sublime-plugin" aria-hidden="true"><span class="octicon octicon-link"></span></a>Postgresql Function Editor - Sublime Plugin</h1>
 
-<p>Plugin for Sublime Text 3 editor that helps you work directly with postgresql database functions and run pgTAP test.
-Currently under heavy development. <a href="https://trello.com/b/aNujDnId/posgresql-function-editor-sublime-text">trello board</a></p>
+<p>Plugin for <a href="http://www.sublimetext.com">Sublime Text 3</a> that helps you work directly with postgresql database functions and run <a href="http://pgtap.org">pgTAP</a> test. <a href="https://trello.com/b/aNujDnId/posgresql-function-editor-sublime-text">Trello board</a></p>
 
-<p><em>Warning:</em> If you experience problems or have enhancements please <a href="https://github.com/danmanstx/pfe/issues">file an issue</a>.</p>
+<p><em>Warning:</em> If you experience problems or have suggestions please <a href="https://github.com/danmanstx/pfe/issues">file an issue</a>.</p>
 
 <h2>
 <a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
@@ -55,6 +54,9 @@ Currently under heavy development. <a href="https://trello.com/b/aNujDnId/posgre
 <li>Ability to Run a <a href="http://pgtap.org">pgTAP</a> test, or all open test files.</li>
 <li>Pgplsql highlighting, and pgTAP output panel highlighting.</li>
 <li>Quick Switch between file and test with <kbd>CMD</kbd>+<kbd>.</kbd>.</li>
+<li>Quick Create new plpgsql functions with <kbd>CMD</kbd>+<kbd>ALT</kbd>+<kbd>o</kbd>.</li>
+<li>Common Completions and Snippets for <code>plpgsql</code>
+</li>
 </ul>
 
 <p><img src="https://raw.github.com/danmanstx/pfe/master/images/pfe.gif" alt="gif"></p>
@@ -107,7 +109,7 @@ Currently under heavy development. <a href="https://trello.com/b/aNujDnId/posgre
 <p><img src="https://raw.github.com/danmanstx/pfe/master/images/test.png" alt="Test Output"></p>
 
 <h4>
-<a id="run-all-tests-opened" class="anchor" href="#run-all-tests-opened" aria-hidden="true"><span class="octicon octicon-link"></span></a>Run all tests opened</h4>
+<a id="run-all-opened-tests" class="anchor" href="#run-all-opened-tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Run all opened tests</h4>
 
 <ul>
 <li>Invoke via <kbd>F4</kbd> or <code>Tools</code> -&gt; <code>Postgresql Function Editor</code> -&gt; <code>Run All Opened Tests</code>
@@ -122,6 +124,15 @@ Currently under heavy development. <a href="https://trello.com/b/aNujDnId/posgre
 <li>Invoke via <kbd>CMD</kbd>+<kbd>.</kbd> or <kbd>CMD</kbd>+<kbd>Ctrl</kbd>+<kbd>.</kbd> for same pane split.</li>
 <li>Attempts to switch to or create the alternating file/test based on the schema and function name.</li>
 <li>this expects either a <code>public</code>/<code>testing</code> schema, or <code>foo</code> and <code>foo_testing</code> schemas as an example.</li>
+</ul>
+
+<h3>
+<a id="create-new-function" class="anchor" href="#create-new-function" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create New Function</h3>
+
+<ul>
+<li>Invoke via <kbd>CMD</kbd>+<kbd>ALT</kbd>+<kbd>o</kbd>
+</li>
+<li>Brings up a list of schemas, and then allows you to specify the exact function you would like. Then use <kbd>F2</kbd> to save this function into the current database.</li>
 </ul>
 
 <h2>
@@ -143,7 +154,7 @@ Currently under heavy development. <a href="https://trello.com/b/aNujDnId/posgre
 
 <ol>
 <li>install <a href="https://rvm.io">rvm</a><br>
-<code>gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3</code>
+<code>gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3</code><br>
 <code>\curl -sSL https://get.rvm.io | bash -s stable</code>
 </li>
 <li>install ruby in rvm<br>
@@ -205,6 +216,17 @@ Currently under heavy development. <a href="https://trello.com/b/aNujDnId/posgre
 <ul>
 <li>Inspired by <a href="http://www.suran.com">Suran Systems</a> Textmate Postgresql Bundle.</li>
 <li>Quick Switching Inspired by <a href="https://github.com/maltize/sublime-text-2-ruby-tests">Ruby Test</a>.</li>
+<li>Quick File Creation Inspired By <a href="https://github.com/noklesta/SublimeQuickFileCreator">Sublime Quick File Creator</a>
+</li>
+</ul>
+
+<h2>
+<a id="roadmap" class="anchor" href="#roadmap" aria-hidden="true"><span class="octicon octicon-link"></span></a>Roadmap</h2>
+
+<ul>
+<li>Add more plpgsql Snippets for better autocompletion.</li>
+<li>Change to psql build system for easier install and use.</li>
+<li>Creation of atom plugin because sublime's future is uncertain.</li>
 </ul>
 
 <h2>
