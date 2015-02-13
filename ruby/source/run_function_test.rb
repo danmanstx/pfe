@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require_relative 'function_editor'
 
 host = ARGF.argv[0] || 'localhost'
