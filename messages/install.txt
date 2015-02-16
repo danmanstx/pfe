@@ -1,6 +1,6 @@
-Congratulation! You have installed awesome plugin for creating/editing/testing Postgresql Functions!
+Congratulation! You have installed an awesome plugin for creating/editing/testing Postgresql Functions!
 Documentation can be found on  https://github.com/danmanstx/pfe
 Also feel free to report issues/suggestions there.
 
-Have fun !
+Have fun!
 Danny Peters
