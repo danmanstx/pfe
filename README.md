@@ -66,7 +66,7 @@ Plugin for [Sublime Text 3](http://www.sublimetext.com) that helps you work dire
 
 ## Dependencies
 
-* Sublime Text 3
+* [Sublime Text 3](http://www.sublimetext.com) and [Package Manager](https://packagecontrol.io), 
 * [pgTAP](http://pgtap.org) for pgTAP testing
 
 ## How to install on a Mac
@@ -93,9 +93,7 @@ Go to `Preferences` -> `Package Settings` -> `Postgresql Function Editor`->`Sett
   "host": "localhost",
   "database": "database",
   "user": "postgresql",
-  "password": "",
   "port": "5432",
-  "ruby_manager": "rvm"
 }
 </pre>
 
