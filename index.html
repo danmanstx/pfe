@@ -139,12 +139,8 @@
 <a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h2>
 
 <ul>
-<li>Sublime Text 3</li>
-<li>working ruby install with support for <a href="http://rvm.io">rvm</a>, <a href="http://www.macports.org">macports</a>, and system ruby <strong>be sure to set in user settings</strong>
-</li>
 <li>
-<a href="https://rubygems.org/gems/pg">Ruby gem PG</a> <code>gem install pg</code>
-</li>
+<a href="http://www.sublimetext.com">Sublime Text 3</a> and <a href="https://packagecontrol.io">Package Manager</a>, </li>
 <li>
 <a href="http://pgtap.org">pgTAP</a> for pgTAP testing</li>
 </ul>
@@ -152,32 +148,20 @@
 <h2>
 <a id="how-to-install-on-a-mac" class="anchor" href="#how-to-install-on-a-mac" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to install on a Mac</h2>
 
-<ol>
-<li>install <a href="https://rvm.io">rvm</a><br>
-<code>gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3</code><br>
-<code>\curl -sSL https://get.rvm.io | bash -s stable</code>
+<ul>
+<li>install <a href="https://packagecontrol.io/installation">package manager</a>
 </li>
-<li>install ruby in rvm<br>
-<code>rvm install 2.1.5</code>
-</li>
-<li><a href="http://postgresapp.com">install postgresql app</a></li>
-<li>use header from postgresql app with rvm ruby to install <code>gem pg</code><br>
-<code>gem install pg -- --with-pg-include='/Applications/Postgres.app/Contents/Versions/9.4/include/' --with-pg-config=/Applications/Postgres.app/Contents/Versions/9.4/bin/pg_config</code>
-</li>
-<li>install <a href="http://www.sublimetext.com/3">sublime</a> <em>if needed</em>
-</li>
-<li>install <a href="https://packagecontrol.io/installation">package manager</a> <em>if needed</em>
-</li>
-<li>run the following to install Xcode command line tools <em>if needed</em><br>
-<code>xcode-select --install</code>
-</li>
-<li>clone repo for pfe <br>
-<code>git clone https://github.com/danmanstx/pfe.git</code>
-</li>
+<li>clone repo for pfe in packages directory</li>
+</ul>
+
+<div class="highlight highlight-bash"><pre><span class="pl-s3">cd</span> <span class="pl-k">~</span>/Library/Application<span class="pl-cce">\ </span>Support/Sublime<span class="pl-cce">\ </span>Text<span class="pl-cce">\ </span>3/Packages
+git clone https://github.com/danmanstx/pfe.git</pre></div>
+
+<ul>
 <li>before closing sublime add <code>pfe</code> to your <code>installed packages</code> located here:<br>
 <code>Sublime text --&gt; Preferences --&gt; Package Settings --&gt; Package Control --&gt; Settings - User</code>
 </li>
-</ol>
+</ul>
 
 <p><strong>COMING SOON</strong> install with <a href="http://wbond.net/sublime_packages/package_control">Package Control</a></p>
 
@@ -188,17 +172,13 @@
 
 <p>Go to <code>Preferences</code> -&gt; <code>Package Settings</code> -&gt; <code>Postgresql Function Editor</code>-&gt;<code>Settings - User</code> and add this to the file or copy and edit from <code>Settings - Default</code> :</p>
 
-<pre>
-{
-  "function_folder": "/tmp/postgresFunctions",
-  "host": "localhost",
-  "database": "database",
-  "user": "postgresql",
-  "password": "",
-  "port": "5432",
-  "ruby_manager": "rvm"
-}
-</pre>
+<div class="highlight highlight-json"><pre>{
+  <span class="pl-s1"><span class="pl-pds">"</span>function_folder<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>/tmp/postgresFunctions<span class="pl-pds">"</span></span>,
+  <span class="pl-s1"><span class="pl-pds">"</span>host<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>localhost<span class="pl-pds">"</span></span>,
+  <span class="pl-s1"><span class="pl-pds">"</span>database<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>database<span class="pl-pds">"</span></span>,
+  <span class="pl-s1"><span class="pl-pds">"</span>user<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>postgresql<span class="pl-pds">"</span></span>,
+  <span class="pl-s1"><span class="pl-pds">"</span>port<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>5432<span class="pl-pds">"</span></span>,
+}</pre></div>
 
 <h2>
 <a id="changelog" class="anchor" href="#changelog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Changelog</h2>
@@ -217,6 +197,8 @@
 <li>Inspired by <a href="http://www.suran.com">Suran Systems</a> Textmate Postgresql Bundle.</li>
 <li>Quick Switching Inspired by <a href="https://github.com/maltize/sublime-text-2-ruby-tests">Ruby Test</a>.</li>
 <li>Quick File Creation Inspired By <a href="https://github.com/noklesta/SublimeQuickFileCreator">Sublime Quick File Creator</a>
+</li>
+<li>No more ruby or gems! Thanks to <a href="http://phusion.github.io/traveling-ruby/">Traveling Ruby</a>
 </li>
 </ul>
 
