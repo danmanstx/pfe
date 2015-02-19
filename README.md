@@ -71,15 +71,15 @@ Plugin for [Sublime Text 3](http://www.sublimetext.com) that helps you work dire
 
 ## How to install on a Mac
 
+* install [package manager](https://packagecontrol.io/installation)
+* clone repo for pfe in packages directory
 
-1. install [sublime](http://www.sublimetext.com/3) *if needed*
-2. install [package manager](https://packagecontrol.io/installation) *if needed*
-3. clone repo for pfe <br>
-  ```bash
-  cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
-  git clone https://github.com/danmanstx/pfe.git
-  ```
-4. before closing sublime add `pfe` to your `installed packages` located here:<br>
+```bash
+cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
+git clone https://github.com/danmanstx/pfe.git
+```
+
+* before closing sublime add `pfe` to your `installed packages` located here:<br>
   `Sublime text --> Preferences --> Package Settings --> Package Control --> Settings - User`
 
 **COMING SOON** install with [Package Control](http://wbond.net/sublime_packages/package_control)
