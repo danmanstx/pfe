@@ -75,7 +75,10 @@ Plugin for [Sublime Text 3](http://www.sublimetext.com) that helps you work dire
 1. install [sublime](http://www.sublimetext.com/3) *if needed*
 2. install [package manager](https://packagecontrol.io/installation) *if needed*
 3. clone repo for pfe <br>
-  `git clone https://github.com/danmanstx/pfe.git`
+  ```bash
+  cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
+  git clone https://github.com/danmanstx/pfe.git
+  ```
 4. before closing sublime add `pfe` to your `installed packages` located here:<br>
   `Sublime text --> Preferences --> Package Settings --> Package Control --> Settings - User`
 
@@ -87,7 +90,7 @@ Sample options below.
 
 Go to `Preferences` -> `Package Settings` -> `Postgresql Function Editor`->`Settings - User` and add this to the file or copy and edit from `Settings - Default` :
 
-<pre>
+```json
 {
   "function_folder": "/tmp/postgresFunctions",
   "host": "localhost",
@@ -95,7 +98,7 @@ Go to `Preferences` -> `Package Settings` -> `Postgresql Function Editor`->`Sett
   "user": "postgresql",
   "port": "5432",
 }
-</pre>
+```
 
 ## Changelog
 
