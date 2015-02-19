@@ -67,27 +67,16 @@ Plugin for [Sublime Text 3](http://www.sublimetext.com) that helps you work dire
 ## Dependencies
 
 * Sublime Text 3
-* working ruby install with support for [rvm](http://rvm.io), [macports](http://www.macports.org), and system ruby **be sure to set in user settings**
-* [Ruby gem PG](https://rubygems.org/gems/pg) `gem install pg`
 * [pgTAP](http://pgtap.org) for pgTAP testing
 
 ## How to install on a Mac
 
-1. install [rvm](https://rvm.io)<br>
-  `gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3`<br>
-`\curl -sSL https://get.rvm.io | bash -s stable`
-2. install ruby in rvm<br>
-`rvm install 2.1.5`
-3. [install postgresql app](http://postgresapp.com)
-4. use header from postgresql app with rvm ruby to install `gem pg`<br>
-  `gem install pg -- --with-pg-include='/Applications/Postgres.app/Contents/Versions/9.4/include/' --with-pg-config=/Applications/Postgres.app/Contents/Versions/9.4/bin/pg_config`
-5. install [sublime](http://www.sublimetext.com/3) *if needed*
-6. install [package manager](https://packagecontrol.io/installation) *if needed*
-7. run the following to install Xcode command line tools *if needed*<br>
-  `xcode-select --install`
-8. clone repo for pfe <br>
+
+1. install [sublime](http://www.sublimetext.com/3) *if needed*
+2. install [package manager](https://packagecontrol.io/installation) *if needed*
+3. clone repo for pfe <br>
   `git clone https://github.com/danmanstx/pfe.git`
-9. before closing sublime add `pfe` to your `installed packages` located here:<br>
+4. before closing sublime add `pfe` to your `installed packages` located here:<br>
   `Sublime text --> Preferences --> Package Settings --> Package Control --> Settings - User`
 
 **COMING SOON** install with [Package Control](http://wbond.net/sublime_packages/package_control)
@@ -121,6 +110,7 @@ Go to `Preferences` -> `Package Settings` -> `Postgresql Function Editor`->`Sett
 * Inspired by [Suran Systems](http://www.suran.com) Textmate Postgresql Bundle.
 * Quick Switching Inspired by [Ruby Test](https://github.com/maltize/sublime-text-2-ruby-tests).
 * Quick File Creation Inspired By [Sublime Quick File Creator](https://github.com/noklesta/SublimeQuickFileCreator)
+* No more ruby or gems! Thanks to [Traveling Ruby](http://phusion.github.io/traveling-ruby/)
 
 ## Roadmap
 
