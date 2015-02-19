@@ -1,4 +1,4 @@
-import sublime, sublime_plugin, os, os.path
+import sublime, sublime_plugin, os, os.path,tarfile,subprocess
 
 SETTINGS_FILE = 'postgresql_function_editor.sublime-settings'
 pfe_settings = None
@@ -6,22 +6,20 @@ pfe_settings = None
 def plugin_loaded():
   global pfe_settings,ruby_manager,ruby_cmd,ruby_files_dir
   pfe_settings = sublime.load_settings(SETTINGS_FILE)
-  ruby_manager = pfe_settings.get('ruby_manager', '')
-
-  if ruby_manager == 'rvm':
-    ruby_cmd = "~/.rvm/bin/rvm-auto-ruby ";
-  elif ruby_manager == 'port':
-    ruby_cmd = '/opt/local/bin/ruby ';
+  ruby_cmd = sublime.packages_path() + "/pfe/pfe-1.0.0-osx/pfe"
+  if os.path.isfile(ruby_cmd):
+    pass
   else:
-    ruby_cmd = '/usr/bin/ruby ';
-  ruby_files_dir = sublime.packages_path() + "/pfe/ruby/source/"
+    tar = tarfile.open(sublime.packages_path() + '/pfe/pfe-1.0.0-osx.tar.gz')
+    tar.extractall(sublime.packages_path() + '/pfe/')
+    tar.close()
 
 class LoadDatabaseFunctionsCommand(sublime_plugin.WindowCommand):
   def run(self):
-    ruby_file = "'"+ ruby_files_dir + "create_schema_folders.rb'"
-    cmd_str = ruby_cmd + ruby_file  + ' ' + pfe_settings.get('host') + ' ' + pfe_settings.get('database')
-    cmd_str = cmd_str + ' ' + pfe_settings.get('port') + ' ' + pfe_settings.get('user')
-    output = os.popen(cmd_str).read()
+    cmd_str = pfe_settings.get('host') + ' ' + pfe_settings.get('database')
+    cmd_str = cmd_str + ' ' + pfe_settings.get('port') + ' ' + pfe_settings.get('user') + ' create'
+    process = subprocess.Popen([ruby_cmd, cmd_str], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    output, error = process.communicate()
     dir=pfe_settings.get("tmp_folder", "/tmp/postgresFunctions")
     subdir= [os.path.join(dir,o) for o in os.listdir(dir) if os.path.isdir(os.path.join(dir,o))]
     project_data = {'folders': []}
@@ -29,16 +27,17 @@ class LoadDatabaseFunctionsCommand(sublime_plugin.WindowCommand):
         project_data['folders'].append({'path': dir})
     self.window.set_project_data(project_data)
     self.window.run_command("refresh_folder_list")
-    sublime.message_dialog(str(output))
+    sublime.message_dialog(str(output.decode('ascii')))
 
 class SaveDatabaseFunctionCommand(sublime_plugin.WindowCommand):
   def run(self):
     sublime.active_window().active_view().run_command("save")
-    ruby_file = "'"+ ruby_files_dir + "save_database_function.rb'"
-    cmd_str = ruby_cmd + ruby_file + ' ' + pfe_settings.get('host')
-    cmd_str = cmd_str + ' ' + pfe_settings.get('database') + ' ' + pfe_settings.get('port') + ' ' + pfe_settings.get('user')
-    cmd_str = cmd_str + ' ' + sublime.active_window().active_view().file_name().replace(" ","\\ ")
-    cmd_out = os.popen(cmd_str).read()
+    # ruby_file = "'"+ ruby_files_dir + "save_database_function.rb'"
+    cmd_str = pfe_settings.get('host') + ' ' + pfe_settings.get('database')
+    cmd_str = cmd_str + ' ' + pfe_settings.get('port') + ' ' + pfe_settings.get('user')
+    cmd_str = cmd_str + ' save ' + sublime.active_window().active_view().file_name().replace(" ","\\ ")
+    process = subprocess.Popen([ruby_cmd, cmd_str], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    output, error = process.communicate()
     self.output_view = self.window.get_output_panel("textarea")
     self.output_view.settings().set("color_scheme", "Packages/pfe/color.tmTheme")
     self.output_view.set_syntax_file("Packages/pfe/scheme.tmLanguage")
@@ -47,7 +46,7 @@ class SaveDatabaseFunctionCommand(sublime_plugin.WindowCommand):
     self.output_view.run_command("append", {"characters": "using " + pfe_settings.get('database')+ " on "+ pfe_settings.get('host')})
     self.output_view.run_command("append", {"characters": "\nfilename: "+ sublime.active_window().active_view().file_name().split('/').pop()+ "\n\n"})
     self.output_view.run_command("append", {"characters": "RESULT:\n"})
-    self.output_view.run_command("append", {"characters": cmd_out})
+    self.output_view.run_command("append", {"characters": str(output.decode('ascii'))})
     self.output_view.set_read_only(True)
 
 class runAllFunctionTestsCommand(sublime_plugin.WindowCommand):
@@ -57,11 +56,12 @@ class runAllFunctionTestsCommand(sublime_plugin.WindowCommand):
     for view in sublime.active_window().views():
       if not(view.file_name().split('/').pop().startswith("test_")):
         continue
-      ruby_file = "'"+sublime.packages_path() + "/pfe/ruby/source/run_function_test.rb'"
-      cmd_str = ruby_cmd + ruby_file + ' ' + pfe_settings.get('host')
-      cmd_str = cmd_str + ' ' + pfe_settings.get('database') + ' ' + pfe_settings.get('port') + ' ' + pfe_settings.get('user')
-      cmd_str = cmd_str + ' ' + view.file_name().replace(" ","\\ ")
-      cmd_out = cmd_out + os.popen(cmd_str).read()
+      cmd_str = pfe_settings.get('host') + ' ' + pfe_settings.get('database')
+      cmd_str = cmd_str + ' ' + pfe_settings.get('port') + ' ' + pfe_settings.get('user')
+      cmd_str = cmd_str + ' test ' + view.file_name().replace(" ","\\ ")
+      process = subprocess.Popen([ruby_cmd, cmd_str], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+      output, error = process.communicate()
+      cmd_out = cmd_out + str(output.decode('ascii'))
     self.output_view = self.window.get_output_panel("textarea")
     self.output_view.settings().set("color_scheme", "Packages/pfe/color.tmTheme")
     self.output_view.set_syntax_file("Packages/pfe/scheme.tmLanguage")
@@ -77,11 +77,12 @@ class runFunctionTestCommand(sublime_plugin.WindowCommand):
     sublime.active_window().active_view().run_command("save")
     cmd_out = "This is not a test."
     if sublime.active_window().active_view().file_name().split('/').pop().startswith("test_"):
-      ruby_file = "'"+sublime.packages_path() + "/pfe/ruby/source/run_function_test.rb'"
-      cmd_str = ruby_cmd + ruby_file + ' ' + pfe_settings.get('host')
-      cmd_str = cmd_str + ' ' + pfe_settings.get('database') + ' ' + pfe_settings.get('port') + ' ' + pfe_settings.get('user')
-      cmd_str = cmd_str + ' ' + sublime.active_window().active_view().file_name().replace(" ","\\ ")
-      cmd_out = os.popen(cmd_str).read()
+      cmd_str = pfe_settings.get('host') + ' ' + pfe_settings.get('database')
+      cmd_str = cmd_str + ' ' + pfe_settings.get('port') + ' ' + pfe_settings.get('user')
+      cmd_str = cmd_str + ' test ' + sublime.active_window().active_view().file_name().replace(" ","\\ ")
+      process = subprocess.Popen([ruby_cmd, cmd_str], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+      output, error = process.communicate()
+      cmd_out = str(output.decode('ascii'))
     self.output_view = self.window.get_output_panel("textarea")
     self.output_view.settings().set("color_scheme", "Packages/pfe/color.tmTheme")
     self.output_view.set_syntax_file("Packages/pfe/scheme.tmLanguage")
