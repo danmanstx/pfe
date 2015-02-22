@@ -21,9 +21,6 @@
   { "caption": "Postgresql Function Editor: Set Password",
     "command": "set_password"
   },
-  { "caption": "Postgresql Function Editor: Set Ruby Manager",
-    "command": "set_ruby_manager"
-  },
   { "caption": "Postgresql Function Editor: Save Database Function",
     "command": "save_database_function"
   },

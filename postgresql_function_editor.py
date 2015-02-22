@@ -222,16 +222,6 @@ class SetPasswordCommand(sublime_plugin.WindowCommand):
     pfe_settings.set("password", input)
     sublime.save_settings("postgresql_function_editor.sublime-settings")
 
-class SetRubyManagerCommand(sublime_plugin.WindowCommand):
-  def run(self):
-    self.window.show_input_panel("set ruby manager:",
-                                  pfe_settings.get("ruby_manager"),
-                                  self.on_done, None, None)
-
-  def on_done(self, input):
-    pfe_settings.set("ruby_manager", input)
-    sublime.save_settings("postgresql_function_editor.sublime-settings")
-
 class GetSyntaxCommand(sublime_plugin.TextCommand):
   def run(self, edit):
     for region in self.view.sel():
