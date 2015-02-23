@@ -116,8 +116,8 @@ Go to `Preferences` -> `Package Settings` -> `Postgresql Function Editor`->`Sett
 ## Roadmap
 
 * Add more plpgsql Snippets for better autocompletion.
-* Change to psql build system for easier install and use.
 * Creation of atom plugin because sublime's future is uncertain.
+* Add linux/Windows Traveling Ruby Packages
 
 ## Copyright and license
 
