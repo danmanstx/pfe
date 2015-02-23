@@ -44,7 +44,7 @@
       <key>pending</key>
       <string>test cucumber pending in summary</string>
       <key>match</key>
-      <string>\d(..)\d+</string>
+      <string>^\d(..)\d+</string>
       <key>name</key>
       <string>numbers</string>
     </dict>
@@ -60,13 +60,13 @@
       <key>comment</key>
       <string>color syntax response</string>
       <key>match</key>
-      <string>(localhost)|(hosting\d+.\w+.com)</string>
+      <string>(localhost)|(hosting\d+.\w+.com)|(^\#\s\w*)</string>
       <key>name</key>
       <string>host_name</string>
     </dict>
   </array>
   <key>scopeName</key>
-  <string>tests.ruby</string>
+  <string>tests.psql</string>
   <key>uuid</key>
   <string>72174d10-bb12-11e0-962b-112233445566</string>
 </dict>
