@@ -6,13 +6,13 @@ Plugin for [Sublime Text 3](http://www.sublimetext.com) that helps you work dire
 
 ## Features
 
-* Load functions from a specified database.
+* Creates a local copy of all database functions from a specified database.
 * Save a Function to the database with output.
 * Ability to Run a [pgTAP](http://pgtap.org) test, or all open test files.
 * Pgplsql highlighting, and pgTAP output panel highlighting.
 * Quick Switch between file and test with <kbd>CMD</kbd>+<kbd>.</kbd>.
 * Quick Create new plpgsql functions with <kbd>CMD</kbd>+<kbd>ALT</kbd>+<kbd>o</kbd>.
-* Common Completions and Snippets for `plpgsql`
+* Common Completions and Snippets for `plpgsql` files
 
 ![gif](https://raw.github.com/danmanstx/pfe/master/images/pfe.gif)
 
