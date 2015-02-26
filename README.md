@@ -1,6 +1,6 @@
 # Postgresql Function Editor - Sublime Plugin
 
-Plugin for [Sublime Text 3](http://www.sublimetext.com) that helps you work directly with postgresql database functions and run [pgTAP](http://pgtap.org) test. [Trello board](https://trello.com/b/aNujDnId/posgresql-function-editor-sublime-text)
+Plugin for [Sublime Text 3](http://www.sublimetext.com) that helps you work directly with postgresql database functions and run [pgTAP](http://pgtap.org) tests. [Trello board](https://trello.com/b/aNujDnId/posgresql-function-editor-sublime-text)
 
 *Warning:* If you experience problems or have suggestions please [file an issue](https://github.com/danmanstx/pfe/issues).
 
