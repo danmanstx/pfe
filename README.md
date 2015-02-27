@@ -6,7 +6,7 @@ Plugin for [Sublime Text 3](http://www.sublimetext.com) that helps you work dire
 
 ## Features
 
-* Creates a local copy of all database functions from a specified database.
+* Creates a local temporary copy of all database functions from a specified database.
 * Save a Function to the database with output.
 * Ability to Run a [pgTAP](http://pgtap.org) test, or all open test files.
 * Pgplsql highlighting, and pgTAP output panel highlighting.
