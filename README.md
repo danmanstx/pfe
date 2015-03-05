@@ -68,6 +68,7 @@ Plugin for [Sublime Text 3](http://www.sublimetext.com) that helps you work dire
 
 * [Sublime Text 3](http://www.sublimetext.com) and [Package Manager](https://packagecontrol.io), 
 * [pgTAP](http://pgtap.org) for pgTAP testing
+* passwordless access to database either through hba_conf file or .pgpass file.
 
 ## How to install on a Mac
 
