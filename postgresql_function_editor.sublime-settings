@@ -3,6 +3,5 @@
   "host": "localhost",
   "database": "database",
   "user": "postgresql",
-  "password": "",
   "port": "5432",
 }
