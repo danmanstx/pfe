@@ -123,6 +123,6 @@ Go to `Preferences` -> `Package Settings` -> `Postgresql Function Editor`->`Sett
 
 ## Copyright and license
 
-Copyright © 2014 Danny Peters, @[danmanstx](http://twitter.com/danmanstx)
+Copyright © 2015 Danny Peters, @[danmanstx](http://twitter.com/danmanstx)
 
 Licensed under the [**GNU GPL**](https://gnu.org/licenses/gpl.html) license.
