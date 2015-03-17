@@ -10,7 +10,7 @@ Plugin for [Sublime Text 3](http://www.sublimetext.com) that helps you work dire
 * Save a Function to the database with output.
 * Ability to Run a [pgTAP](http://pgtap.org) test, or all open test files.
 * Pgplsql highlighting, and pgTAP output panel highlighting.
-* Quick Switch between file and test with <kbd>CMD</kbd>+<kbd>.</kbd>.
+* Quick Switch between file and test with <kbd>CMD</kbd>+<kbd>.</kbd>
 * Quick Create new plpgsql functions with <kbd>CMD</kbd>+<kbd>ALT</kbd>+<kbd>o</kbd>.
 * Common Completions and Snippets for `plpgsql` files
 
@@ -48,7 +48,7 @@ Plugin for [Sublime Text 3](http://www.sublimetext.com) that helps you work dire
 
 ![Test Output](https://raw.github.com/danmanstx/pfe/master/images/test.png)
 
-#### Run all opened tests 
+#### Run all opened tests
 
 * Invoke via <kbd>F4</kbd> or `Tools` -> `Postgresql Function Editor` -> `Run All Opened Tests`
 * Saves the active function to the database and opens a panel with the test output for all open test.
@@ -66,7 +66,7 @@ Plugin for [Sublime Text 3](http://www.sublimetext.com) that helps you work dire
 
 ## Dependencies
 
-* [Sublime Text 3](http://www.sublimetext.com) and [Package Manager](https://packagecontrol.io), 
+* [Sublime Text 3](http://www.sublimetext.com) and [Package Manager](https://packagecontrol.io),
 * [pgTAP](http://pgtap.org) for pgTAP testing
 * passwordless access to database either through hba_conf file or .pgpass file.
 
