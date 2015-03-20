@@ -27,6 +27,9 @@
   { "caption": "Postgresql Function Editor: Run pgTAP test",
     "command": "run_function_test"
   },
+  { "caption": "Postgresql Function Editor: Run pgTAP Schema tests",
+    "command": "run_schema_test"
+  },
   { "caption": "Postgresql Function Editor: Run All Opened pgTAP Tests",
     "command": "run_all_function_tests"
   },

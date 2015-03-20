@@ -94,6 +94,28 @@ class runFunctionTestCommand(sublime_plugin.WindowCommand):
     self.output_view.run_command("append", {"characters": cmd_out})
     self.output_view.set_read_only(True)
 
+class runSchemaTestCommand(sublime_plugin.WindowCommand):
+  def run(self):
+    sublime.active_window().active_view().run_command("save")
+    cmd_out = "This is not a test."
+    if sublime.active_window().active_view().file_name().split('/').pop().startswith("test_"):
+      cmd_str = pfe_settings.get('host') + ' ' + pfe_settings.get('database')
+      cmd_str = cmd_str + ' ' + pfe_settings.get('port') + ' ' + pfe_settings.get('user')
+      cmd_str = cmd_str + ' test_schema ' + sublime.active_window().active_view().file_name().replace(" ","\\ ")
+      process = subprocess.Popen([ruby_cmd, cmd_str], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+      output, error = process.communicate()
+      cmd_out = str(output.decode('ascii'))
+    self.output_view = self.window.get_output_panel("textarea")
+    self.output_view.settings().set("color_scheme", "Packages/pfe/color.tmTheme")
+    self.output_view.set_syntax_file("Packages/pfe/scheme.tmLanguage")
+    self.window.run_command("show_panel", {"panel": "output.textarea"})
+    self.output_view.set_read_only(False)
+    self.output_view.run_command("append", {"characters": "using " + pfe_settings.get('database') + " on "+ pfe_settings.get('host')})
+    self.output_view.run_command("append", {"characters": "\nfilename: "+ sublime.active_window().active_view().file_name().split('/').pop()+ "\n\n"})
+    self.output_view.run_command("append", {"characters": "RESULT:\n"})
+    self.output_view.run_command("append", {"characters": cmd_out})
+    self.output_view.set_read_only(True)
+
 class CreateNewFunctionCommand(sublime_plugin.WindowCommand):
   def run(self, should_split_view):
     pfe_settings.set('should_split_view', should_split_view)

@@ -9,7 +9,8 @@
         { "caption": "-" },
         { "caption": "Save Function", "command": "save_database_function" },
         { "caption": "Run pgTAP Test", "command": "run_function_test" },
-        { "caption": "Run All Opened pgTAP Tests", "command": "run_all_function_tests" }
+        { "caption": "Run All Opened pgTAP Tests", "command": "run_all_function_tests" },
+        { "caption": "Run Test For the Whole Schema", "command": "run_schema_test" }
       ]
   }
 ]
