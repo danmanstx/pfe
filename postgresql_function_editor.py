@@ -154,12 +154,12 @@ class CreateNewFunctionCommand(sublime_plugin.WindowCommand):
     if self.window.num_groups() == 1:
       self.window.run_command('set_layout',
                       {
-                      "cols": [0.0, 1.0],
-                      "rows": [0.0, 0.5, 1.0],
-                      "cells": [[0, 0, 1, 1], [0, 1, 1, 2]]
+                      "cols": [0.0, 0.5, 1.0],
+                      "rows": [0.0, 1.0],
+                      "cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
                       })
-      self.window.run_command('focus_group', {"group": 0})
-      self.window.run_command('move_to_group', {"group": 1})
+    self.window.run_command('focus_group', {"group": 1})
+    # self.window.run_command('move_to_group', {"group": 1})
 
 class NewFunctionLoadCommand(sublime_plugin.TextCommand):
     def run(self, edit):
