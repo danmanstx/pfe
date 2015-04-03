@@ -55,7 +55,7 @@ Plugin for [Sublime Text 3](http://www.sublimetext.com) that helps you work dire
 
 ### Quick Switch/Create File
 
-* Invoke via <kbd>CMD</kbd>+<kbd>.</kbd> or <kbd>CMD</kbd>+<kbd>Ctrl</kbd>+<kbd>.</kbd> for same pane split.
+* Invoke via <kbd>CMD</kbd>+<kbd>.</kbd> or <kbd>CMD</kbd>+<kbd>Ctrl</kbd>+<kbd>.</kbd> for same pane vertical split.
 * Attempts to switch to or create the alternating file/test based on the schema and function name.
 * this expects either a `public`/`testing` schema, or `foo` and `foo_testing` schemas as an example.
 
