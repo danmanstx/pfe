@@ -64,6 +64,14 @@
       <key>name</key>
       <string>host_name</string>
     </dict>
+    <dict>
+      <key>notice</key>
+      <string>raised notice</string>
+      <key>match</key>
+      <string>(^NOTICE\S.*$)</string>
+      <key>name</key>
+      <string>notice</string>
+    </dict>
   </array>
   <key>scopeName</key>
   <string>tests.psql</string>

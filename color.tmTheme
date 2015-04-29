@@ -111,6 +111,17 @@
         <string>#000000</string>
       </dict>
     </dict>
+    <dict>
+      <key>name</key>
+      <string>Notice</string>
+      <key>scope</key>
+      <string>notice</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#F4F166</string>
+      </dict>
+    </dict>
   </array>
   <key>uuid</key>
   <string>72174d10-bb12-11e0-962b-112233445577</string>
