@@ -17,6 +17,10 @@
             "command":"load_database_functions"
           },
           {
+            "caption":"Create New Function",
+            "command":"quick_create_file"
+          },
+          {
             "caption":"Save Database Function",
             "command":"save_database_function"
           },

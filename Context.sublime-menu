@@ -6,11 +6,12 @@
       [
         { "caption": "Set Database Info", "command": "open_file", "args": { "file" : "${packages}/User/postgresql_function_editor.sublime-settings" } },
         { "caption": "Load Database Functions", "command": "load_database_functions" },
+        { "caption": "Create New Function", "command": "quick_create_file"},
         { "caption": "-" },
         { "caption": "Save Function", "command": "save_database_function" },
         { "caption": "Run pgTAP Test", "command": "run_function_test" },
         { "caption": "Run All Opened pgTAP Tests", "command": "run_all_function_tests" },
-        { "caption": "Run Test For the Whole Schema", "command": "run_schema_test" }
+        { "caption": "Run Whole Schema's Tests", "command": "run_schema_test" }
       ]
   }
 ]
