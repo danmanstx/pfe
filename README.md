@@ -62,6 +62,7 @@ Plugin for [Sublime Text 3](http://www.sublimetext.com) that helps you work dire
 ### Create New Function
 
 * Invoke via <kbd>CMD</kbd>+<kbd>ALT</kbd>+<kbd>o</kbd>
+* Also visible in the tool and right-click menus.
 * Brings up a list of schemas, and then allows you to specify the exact function you would like. Then use <kbd>F2</kbd> to save this function into the current database.
 
 ## Dependencies
