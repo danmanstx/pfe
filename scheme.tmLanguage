@@ -36,7 +36,7 @@
       <key>skipped</key>
       <string>test cucumber skipped</string>
       <key>match</key>
-      <string>(cdmdata\d+)|(web_access)</string>
+      <string>(?:(using))(\s[a-z0-9]+)</string>
       <key>name</key>
       <string>test.skipped</string>
     </dict>

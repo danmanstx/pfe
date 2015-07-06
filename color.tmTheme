@@ -38,6 +38,17 @@
       <key>name</key>
       <string>Test</string>
       <key>scope</key>
+      <string>test.skipped</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#D55B61</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>Test</string>
+      <key>scope</key>
       <string>failing</string>
       <key>settings</key>
       <dict>
