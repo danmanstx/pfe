@@ -17,7 +17,7 @@ def plugin_loaded():
 class LoadDatabaseFunctionsCommand(sublime_plugin.WindowCommand):
   def run(self):
     cmd_str = pfe_settings.get('host') + ' ' + pfe_settings.get('database')
-    cmd_str = cmd_str + ' ' + pfe_settings.get('port') + ' ' + pfe_settings.get('user') + ' create'
+    cmd_str = cmd_str + ' ' + str(pfe_settings.get('port')) + ' ' + pfe_settings.get('user') + ' create'
     process = subprocess.Popen([ruby_cmd, cmd_str], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output, error = process.communicate()
     dir=pfe_settings.get("tmp_folder", "/tmp/postgresFunctions")
