@@ -17,7 +17,7 @@ def plugin_loaded():
 class LoadDatabaseFunctionsCommand(sublime_plugin.WindowCommand):
   def run(self):
     cmd_str = pfe_settings.get('host') + ' ' + pfe_settings.get('database')
-    cmd_str = cmd_str + ' ' + pfe_settings.get('port') + ' ' + pfe_settings.get('user') + ' create'
+    cmd_str = cmd_str + ' ' + str(pfe_settings.get('port')) + ' ' + pfe_settings.get('user') + ' create'
     process = subprocess.Popen([ruby_cmd, cmd_str], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output, error = process.communicate()
     dir=pfe_settings.get("tmp_folder", "/tmp/postgresFunctions")
@@ -34,7 +34,7 @@ class SaveDatabaseFunctionCommand(sublime_plugin.WindowCommand):
     sublime.active_window().active_view().run_command("save")
     # ruby_file = "'"+ ruby_files_dir + "save_database_function.rb'"
     cmd_str = pfe_settings.get('host') + ' ' + pfe_settings.get('database')
-    cmd_str = cmd_str + ' ' + pfe_settings.get('port') + ' ' + pfe_settings.get('user')
+    cmd_str = cmd_str + ' ' + str(pfe_settings.get('port')) + ' ' + pfe_settings.get('user')
     cmd_str = cmd_str + ' save ' + sublime.active_window().active_view().file_name().replace(" ","\\ ")
     process = subprocess.Popen([ruby_cmd, cmd_str], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output, error = process.communicate()
@@ -57,7 +57,7 @@ class runAllFunctionTestsCommand(sublime_plugin.WindowCommand):
       if not(view.file_name().split('/').pop().startswith("test_")):
         continue
       cmd_str = pfe_settings.get('host') + ' ' + pfe_settings.get('database')
-      cmd_str = cmd_str + ' ' + pfe_settings.get('port') + ' ' + pfe_settings.get('user')
+      cmd_str = cmd_str + ' ' + str(pfe_settings.get('port')) + ' ' + pfe_settings.get('user')
       cmd_str = cmd_str + ' test ' + view.file_name().replace(" ","\\ ")
       process = subprocess.Popen([ruby_cmd, cmd_str], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
       output, error = process.communicate()
@@ -78,7 +78,7 @@ class runFunctionTestCommand(sublime_plugin.WindowCommand):
     cmd_out = "This is not a test."
     if sublime.active_window().active_view().file_name().split('/').pop().startswith("test_"):
       cmd_str = pfe_settings.get('host') + ' ' + pfe_settings.get('database')
-      cmd_str = cmd_str + ' ' + pfe_settings.get('port') + ' ' + pfe_settings.get('user')
+      cmd_str = cmd_str + ' ' + str(pfe_settings.get('port')) + ' ' + pfe_settings.get('user')
       cmd_str = cmd_str + ' test ' + sublime.active_window().active_view().file_name().replace(" ","\\ ")
       process = subprocess.Popen([ruby_cmd, cmd_str], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
       output, error = process.communicate()
@@ -100,7 +100,7 @@ class runSchemaTestCommand(sublime_plugin.WindowCommand):
     cmd_out = "This is not a test."
     if sublime.active_window().active_view().file_name().split('/').pop().startswith("test_"):
       cmd_str = pfe_settings.get('host') + ' ' + pfe_settings.get('database')
-      cmd_str = cmd_str + ' ' + pfe_settings.get('port') + ' ' + pfe_settings.get('user')
+      cmd_str = cmd_str + ' ' + str(pfe_settings.get('port')) + ' ' + pfe_settings.get('user')
       cmd_str = cmd_str + ' test_schema ' + sublime.active_window().active_view().file_name().replace(" ","\\ ")
       process = subprocess.Popen([ruby_cmd, cmd_str], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
       output, error = process.communicate()
