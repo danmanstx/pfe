@@ -30,6 +30,11 @@ if [ ! -f "${ARCHIVE_NAME}" ]; then
 	exit 1
 fi
 
+# Preserve the source
+echo "Preserving the source..."
+rm -rf "${SOURCE_DIRECTORY}"/*
+cp -R "${APP_DIRECTORY}"/* "${SOURCE_DIRECTORY}"/
+
 # Extract the existing archive
 echo "Extracting existing archive..."
 rm -rf "${BUILD_DIRECTORY}"
@@ -41,7 +46,7 @@ rm -rf "${APP_DIRECTORY}/*"
 
 # Copy in the current source
 echo "Copying in new source..."
-cp -R "${SOURCE_DIRECTORY}"/* "${APP_DIRECTORY}/"
+cp -R "${SOURCE_DIRECTORY}"/* "${APP_DIRECTORY}"/
 
 # Build new archive
 echo "Building new archive..."
