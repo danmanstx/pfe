@@ -35,19 +35,6 @@ echo "Preserving the source..."
 rm -rf "${SOURCE_DIRECTORY}"/*
 cp -R "${APP_DIRECTORY}"/* "${SOURCE_DIRECTORY}"/
 
-# Extract the existing archive
-echo "Extracting existing archive..."
-rm -rf "${BUILD_DIRECTORY}"
-tar zxf "${ARCHIVE_NAME}"
-
-# Clean the build directory
-echo "Cleaning existing app..."
-rm -rf "${APP_DIRECTORY}/*"
-
-# Copy in the current source
-echo "Copying in new source..."
-cp -R "${SOURCE_DIRECTORY}"/* "${APP_DIRECTORY}"/
-
 # Build new archive
 echo "Building new archive..."
 tar zcf "${ARCHIVE_NAME}" "${BUILD_DIRECTORY}"
