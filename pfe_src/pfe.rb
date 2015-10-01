@@ -1,14 +1,13 @@
-
 require 'pg'
 require 'fileutils'
 
-@host = ARGF.argv[0] || 'localhost'
-@database = ARGF.argv[1] || 'database'
-@port = ARGF.argv[2] || '5432'
-@user = ARGF.argv[3] || 'posgresql'
-@action = ARGF.argv[4] || 'save'
-
-@file = ARGF.argv[5].gsub(' ', '\\ ') unless ARGF.argv[5].nil?
+@host = ARGV[0] || 'localhost'
+@database = ARGV[1] || 'database'
+@port = ARGV[2] || '5432'
+@user = ARGV[3] || 'postgresql'
+@function_directory = ARGV[4] || '/tmp/postgresFunctions'
+@action = ARGV[5] || 'save'
+@file = ARGV[6].gsub('%^%', ' ') unless ARGV[6].nil?
 
 def time
   start = Time.now
@@ -120,11 +119,9 @@ when 'save'
 
 when 'create'
   time do
-    tmp_dir = '/tmp/postgresFunctions/'
-
-    FileUtils.rm_rf tmp_dir if Dir.exist? tmp_dir
-    Dir.mkdir(tmp_dir, 0755)
-    Dir.chdir(tmp_dir)
+    FileUtils.rm_rf @function_directory if Dir.exist? @function_directory
+    Dir.mkdir(@function_directory, 0755)
+    Dir.chdir(@function_directory)
 
     @connection = test_connection(@host, @database, @port, @user)
     return @connection if @connection.is_a?(String)
@@ -143,9 +140,16 @@ when 'create'
       functions.each do |function|
         file_type = file_type(function['lang'])
         post_text = "$BODY$\nLANGUAGE '#{file_type}' #{volatile_type(function['volatile'])}\nCOST #{function['cost']};"
-        Dir.chdir(tmp_dir + function['schema'])
+        Dir.chdir(@function_directory + '/' + function['schema'])
         header = "-- DROP FUNCTION IF EXISTS  #{function['schema']}.#{function['name']}(#{function['drop_args']}) CASCADE;\n\n"
-        IO.write(function['name'] + ".#{file_type}" , "#{header}CREATE OR REPLACE FUNCTION #{function['schema']}.#{function['name']}(#{function['args']})\nRETURNS #{function['return_type']} AS\n$BODY$" + function['body'] + post_text)
+
+        arguments_for_file_name = function['args'].slice(0,199); # There is a 260 character limit on file names. We will allocate 200 for the aguments
+        arguments_for_file_name = arguments_for_file_name.gsub('/', ''); # Remove any path delimiters from the file name
+
+        function_name_for_file_name = function['name'].slice(0,49); # There is a 260 character limit on file names. We will allocate 50 for the function name, leaving 10 for the () and .suffix
+        
+        function_file_name =  function_name_for_file_name + "(" + arguments_for_file_name + ")" + ".#{file_type}"
+        IO.write(function_file_name , "#{header}CREATE OR REPLACE FUNCTION #{function['schema']}.#{function['name']}(#{function['args']})\nRETURNS #{function['return_type']} AS\n$BODY$" + function['body'] + post_text)
       end
     end
   end

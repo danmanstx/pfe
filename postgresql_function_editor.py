@@ -35,10 +35,9 @@ class LoadDatabaseFunctionsCommand(sublime_plugin.WindowCommand):
 class SaveDatabaseFunctionCommand(sublime_plugin.WindowCommand):
   def run(self):
     sublime.active_window().active_view().run_command("save")
-    # ruby_file = "'"+ ruby_files_dir + "save_database_function.rb'"
     cmd_str = pfe_settings.get('host') + ' ' + pfe_settings.get('database')
     cmd_str = cmd_str + ' ' + str(pfe_settings.get('port')) + ' ' + pfe_settings.get('user') + ' "" '
-    cmd_str = cmd_str + ' save ' + sublime.active_window().active_view().file_name().replace(" ","\\ ")
+    cmd_str = cmd_str + ' save ' + sublime.active_window().active_view().file_name().replace(" ","%^%")
     process = subprocess.Popen([ruby_cmd, cmd_str], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output, error = process.communicate()
     self.output_view = self.window.get_output_panel("textarea")
