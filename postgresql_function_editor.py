@@ -16,26 +16,28 @@ def plugin_loaded():
 
 class LoadDatabaseFunctionsCommand(sublime_plugin.WindowCommand):
   def run(self):
+    dir = pfe_settings.get("function_folder", "/tmp/postgresFunctions")
     cmd_str = pfe_settings.get('host') + ' ' + pfe_settings.get('database')
-    cmd_str = cmd_str + ' ' + str(pfe_settings.get('port')) + ' ' + pfe_settings.get('user') + ' create'
+    cmd_str = cmd_str + ' ' + str(pfe_settings.get('port')) + ' ' + pfe_settings.get('user') + ' ' + dir + ' create'
+
     process = subprocess.Popen([ruby_cmd, cmd_str], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output, error = process.communicate()
-    dir=pfe_settings.get("tmp_folder", "/tmp/postgresFunctions")
-    subdir= [os.path.join(dir,o) for o in os.listdir(dir) if os.path.isdir(os.path.join(dir,o))]
+
+    subdir = [os.path.join(dir,o) for o in os.listdir(dir) if os.path.isdir(os.path.join(dir,o))]
     project_data = {'folders': []}
     for dir in subdir:
         project_data['folders'].append({'path': dir})
     self.window.set_project_data(project_data)
     self.window.run_command("refresh_folder_list")
+
     sublime.message_dialog(str(output.decode('ascii')))
 
 class SaveDatabaseFunctionCommand(sublime_plugin.WindowCommand):
   def run(self):
     sublime.active_window().active_view().run_command("save")
-    # ruby_file = "'"+ ruby_files_dir + "save_database_function.rb'"
     cmd_str = pfe_settings.get('host') + ' ' + pfe_settings.get('database')
-    cmd_str = cmd_str + ' ' + str(pfe_settings.get('port')) + ' ' + pfe_settings.get('user')
-    cmd_str = cmd_str + ' save ' + sublime.active_window().active_view().file_name().replace(" ","\\ ")
+    cmd_str = cmd_str + ' ' + str(pfe_settings.get('port')) + ' ' + pfe_settings.get('user') + ' "" '
+    cmd_str = cmd_str + ' save ' + sublime.active_window().active_view().file_name().replace(" ","%^%")
     process = subprocess.Popen([ruby_cmd, cmd_str], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output, error = process.communicate()
     self.output_view = self.window.get_output_panel("textarea")
@@ -57,7 +59,7 @@ class runAllFunctionTestsCommand(sublime_plugin.WindowCommand):
       if not(view.file_name().split('/').pop().startswith("test_")):
         continue
       cmd_str = pfe_settings.get('host') + ' ' + pfe_settings.get('database')
-      cmd_str = cmd_str + ' ' + str(pfe_settings.get('port')) + ' ' + pfe_settings.get('user')
+      cmd_str = cmd_str + ' ' + str(pfe_settings.get('port')) + ' ' + pfe_settings.get('user') + ' "" '
       cmd_str = cmd_str + ' test ' + view.file_name().replace(" ","\\ ")
       process = subprocess.Popen([ruby_cmd, cmd_str], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
       output, error = process.communicate()
@@ -78,7 +80,7 @@ class runFunctionTestCommand(sublime_plugin.WindowCommand):
     cmd_out = "This is not a test."
     if sublime.active_window().active_view().file_name().split('/').pop().startswith("test_"):
       cmd_str = pfe_settings.get('host') + ' ' + pfe_settings.get('database')
-      cmd_str = cmd_str + ' ' + str(pfe_settings.get('port')) + ' ' + pfe_settings.get('user')
+      cmd_str = cmd_str + ' ' + str(pfe_settings.get('port')) + ' ' + pfe_settings.get('user') + ' "" '
       cmd_str = cmd_str + ' test ' + sublime.active_window().active_view().file_name().replace(" ","\\ ")
       process = subprocess.Popen([ruby_cmd, cmd_str], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
       output, error = process.communicate()
@@ -100,7 +102,7 @@ class runSchemaTestCommand(sublime_plugin.WindowCommand):
     cmd_out = "This is not a test."
     if sublime.active_window().active_view().file_name().split('/').pop().startswith("test_"):
       cmd_str = pfe_settings.get('host') + ' ' + pfe_settings.get('database')
-      cmd_str = cmd_str + ' ' + str(pfe_settings.get('port')) + ' ' + pfe_settings.get('user')
+      cmd_str = cmd_str + ' ' + str(pfe_settings.get('port')) + ' ' + pfe_settings.get('user') + ' "" '
       cmd_str = cmd_str + ' test_schema ' + sublime.active_window().active_view().file_name().replace(" ","\\ ")
       process = subprocess.Popen([ruby_cmd, cmd_str], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
       output, error = process.communicate()
@@ -178,18 +180,18 @@ class InsertTestText(sublime_plugin.TextCommand):
   def run(self, edit, filename):
     if self.view.size() == 0:
       file_array = filename.split('/')
-      schema = file_array[3]
-      function_name = file_array[4].split('.')[0]
-      function = "-- DROP FUNCTION IF EXISTS {0}.{1}() CASCADE;\n\nCREATE OR REPLACE FUNCTION {0}.{1}()\nRETURNS SETOF text AS\n$BODY$\nDECLARE\n\nBEGIN\n\n\tRETURN NEXT pgTAP.pass('dummy test');\n\nEND;\n$BODY$\nLANGUAGE 'plpgsql' VOLATILE\nCOST 100;".format(schema,function_name)
+      schema = file_array[-2]
+      function_name = file_array[-1].split('.')[0]
+      function = "-- DROP FUNCTION IF EXISTS {0}.{1}() CASCADE;\n\nCREATE OR REPLACE FUNCTION {0}.{1}()\nRETURNS SETOF text AS\n$BODY$\n\tDECLARE\n\n\tBEGIN\n\n\t\tRETURN NEXT pgTAP.pass('dummy test');\n\n\tEND;\n$BODY$\nLANGUAGE 'plpgsql' VOLATILE\nCOST 100;".format(schema,function_name)
       self.view.insert(edit, 0, function)
 
 class InsertFunctionText(sublime_plugin.TextCommand):
   def run(self, edit, filename):
     if self.view.size() == 0:
       file_array = filename.split('/')
-      schema = file_array[3]
-      function_name = file_array[4].split('.')[0]
-      function = "-- DROP FUNCTION IF EXISTS {0}.{1}() CASCADE;\n\nCREATE OR REPLACE FUNCTION {0}.{1}()\nRETURNS void AS\n$BODY$\nDECLARE\n\nBEGIN\n\n\nEND;\n$BODY$\nLANGUAGE 'plpgsql' VOLATILE\nCOST 100;".format(schema,function_name)
+      schema = file_array[-2]
+      function_name = file_array[-1].split('.')[0]
+      function = "-- DROP FUNCTION IF EXISTS {0}.{1}() CASCADE;\n\nCREATE OR REPLACE FUNCTION {0}.{1}()\nRETURNS void AS\n$BODY$\n\tDECLARE\n\n\tBEGIN\n\n\n\tEND;\n$BODY$\nLANGUAGE 'plpgsql' VOLATILE\nCOST 100;".format(schema,function_name)
       self.view.insert(edit, 0, function)
 
 class SetDatabaseCommand(sublime_plugin.WindowCommand):
